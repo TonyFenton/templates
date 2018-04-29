@@ -9,8 +9,35 @@
 {% block content %}
     <div class="row">
         <div class="col-sm">
-            <div class="jumbotron">
-                <h1>content</h1>
+            <h1>{{ template.name }}</h1>
+            <div id="template" class="jumbotron">
+                <div id="text-control">
+                    {% for index, variable in template.variables %}
+                        <div>
+                            <label for="variable-control-{{ index }}">{{ variable.name }}:</label> <textarea
+                                    id="variable-control-{{ index }}"
+                                    class="form-control text-variable-control variable-control"
+                                    data-variable-id="{{ index }}"
+                                    data-variable-name="{{ variable.name }}"
+                            >{{ variable.value }}</textarea>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div id="text">
+                    {% spaceless %}
+                        {% for item in template.processedText %}
+                            {% if item.variableID is same as(false) %}
+                                <span>{{ item.content }}</span>
+                            {% else %}
+                                <span class="variable-{{ item.variableID }}"></span>
+                            {% endif %}
+                        {% endfor %}
+                    {% endspaceless %}
+                </div>
+                <div id="action-panel">
+                    <button type="button" class="copy-btn btn btn-outline-success">Copy</button>
+                    <button type="button" class="reset-btn btn btn-outline-danger">Reset</button>
+                </div>
             </div>
         </div>
     </div>
