@@ -1,0 +1,10 @@
+@import './layout.css';
+@import './template.css';
+
+#text textarea {
+    min-height: 200px;
+}
+
+#text-variable-prototype {
+    display: none;
+}

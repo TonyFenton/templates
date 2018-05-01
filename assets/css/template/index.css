@@ -1,42 +1,8 @@
 @import './layout.css';
-
-#template {
-    background-color: #f9f9f9;
-    font-family: serif;
-    padding: 30px;
-    border: 1px solid #cccccc;
-}
-
-#text-control {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #cccccc;
-}
-
-#action-panel {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #cccccc;
-}
+@import './template.css';
 
 #text span {
     white-space: pre-wrap;
-}
-
-.text-variable-control {
-    display: inline;
-    height: 24px;
-    width: auto;
-    resize: both;
-    padding: 0 5px;
-    margin: 0;
-    vertical-align: top;
-    overflow: hidden;
-    line-height: 1.4;
-}
-
-#action-panel {
-    text-align: center;
 }
 
 .copy-btn {

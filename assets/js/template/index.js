@@ -3,8 +3,8 @@ import Template from './Template.js'
 import Effect from './../Effect.js'
 
 $(function () {
-
-    let template = new Template();
+    
+    const template = new Template();
 
     /* seting variables value */
     template.variableControl.on('change input', function () {

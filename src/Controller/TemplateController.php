@@ -18,13 +18,19 @@ class TemplateController extends AbstractController
             'processedText' => [
                 ['variableID' => false, 'content' => 'Hi '],
                 ['variableID' => 0, 'content' => ''],
-                ['variableID' => false, 'content' => ',
-Fantastic! Are you free on ' ],
+                [
+                    'variableID' => false,
+                    'content' => ',
+Fantastic! Are you free on ',
+                ],
                 ['variableID' => 1, 'content' => ''],
                 ['variableID' => false, 'content' => ' at '],
                 ['variableID' => 2, 'content' => ''],
-                ['variableID' => false, 'content' => '? If not, please suggest a couple times  that work for you.
-Looking forward to meeting.'],
+                [
+                    'variableID' => false,
+                    'content' => '? If not, please suggest a couple times  that work for you.
+Looking forward to meeting.',
+                ],
             ],
             'variables' => [
                 ["desc" => "", "name" => "name", "type" => "text", "value" => ""],
@@ -37,4 +43,15 @@ Looking forward to meeting.'],
             'template' => $template,
         ]);
     }
+
+    /**
+     * Create a template
+     * @Route("/template/new", name="template_new", methods={"GET", "POST"})
+     */
+    public function new()
+    {
+        return $this->render('template/new.html.twig', [
+        ]);
+    }
+
 }
