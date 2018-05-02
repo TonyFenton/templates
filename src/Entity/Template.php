@@ -60,15 +60,47 @@ class Template
         return $this;
     }
 
-    public function getVariables(): ?string
+    public function getVariables(): array
     {
-        return $this->variables;
+        return json_decode($this->variables);
     }
 
     public function setVariables($variables): self
     {
-        $this->variables = $variables;
+        if (null !== $variables) {
+            $this->variables = $variables;
+        }
 
         return $this;
+    }
+
+    /**
+     * Get text in combination with variables
+     * e.g. [['content' => 'Hey ', 'variableId' => false], ['content' => false, 'variableId' => 0]]
+     * @return array
+     */
+    public function getTextToView(): array
+    {
+        $text = [['content' => $this->getText(), 'variableId' => false]];
+        foreach ($this->getVariables() as $id => $variable) {
+            $textTemp = [];
+            foreach ($text as $item) {
+                if (false === $item['variableId']) {
+                    $snippets = explode('{'.$variable->name.'}', $item['content']);
+                    foreach ($snippets as $snippet) {
+                        if ('' !== $snippet) {
+                            $textTemp[] = ['content' => $snippet, 'variableId' => false];
+                        }
+                        $textTemp[] = ['content' => false, 'variableId' => $id];
+                    }
+                    array_pop($textTemp);
+                } else {
+                    $textTemp[] = $item;
+                }
+            }
+            $text = $textTemp;
+        }
+
+        return $text;
     }
 }

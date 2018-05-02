@@ -25,11 +25,11 @@
                 </div>
                 <div id="text">
                     {% spaceless %}
-                        {% for item in template.processedText %}
-                            {% if item.variableID is same as(false) %}
+                        {% for item in template.textToView %}
+                            {% if item.variableId is same as(false) %}
                                 <span>{{ item.content }}</span>
                             {% else %}
-                                <span class="variable-{{ item.variableID }}"></span>
+                                <span class="variable-{{ item.variableId }}"></span>
                             {% endif %}
                         {% endfor %}
                     {% endspaceless %}
