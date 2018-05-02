@@ -9,25 +9,27 @@
 {% block content %}
     <div class="row">
         <div class="col-sm">
-            <h1>New Template</h1>
+            {{ form_start(form) }}
+            {{ form_row(form.name) }}
             <div id="template" class="jumbotron">
                 <div id="text-control">
                     <div id="variables-wrapper">
                         {# text variable prototype #}
-                        <div id="text-variable-prototype" data-variable="{}" class="variable-control">
-                            <button class="btn btn-outline-secondary remove-btn">Remove</button>
+                        <div id="text-variable-prototype" data-variable="{}">
+                            <button type="button" class="btn btn-outline-secondary remove-btn">Remove</button>
                             <label for="variable-control-1"></label><span>: </span>
-                            <textarea class="form-control text-variable-control variable-control" readonly="readonly"></textarea>
-                            <button class="btn btn-outline-secondary edit-btn" data-toggle="modal" data-target="#variable-modal">Edit</button>
+                            <textarea class="form-control text-variable-control" readonly="readonly"></textarea>
+                            <button type="button" class="btn btn-outline-secondary edit-btn" data-toggle="modal" data-target="#variable-modal">Edit</button>
                         </div>
                     </div>
                     <button id="add-variable-btn" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#variable-modal">Add</button>
                 </div>
-                <div id="text"><textarea class="form-control"></textarea></div>
+                {{ form_row(form.text) }}
                 <div id="action-panel">
                     <input type="submit" value="Save" class="copy-btn btn btn-outline-success"/>
                 </div>
             </div>
+            {{ form_end(form) }}
         </div>
     </div>
 

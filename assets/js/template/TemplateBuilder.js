@@ -10,6 +10,7 @@ export default class TemplateBuilder {
         this.editBtn = $('.edit-btn');
         this.variablesWrapper = $('#variables-wrapper');
         this.textVariablePrototype = $('#text-variable-prototype');
+        this.variablesOutput = $('#template_variables');
     };
 
     /**
@@ -28,13 +29,17 @@ export default class TemplateBuilder {
     createVariable(name, value) {
         const id = this.getVariableId();
         let newVariable = this.textVariablePrototype.clone(true);
-        newVariable.attr({
-            'id': 'variable-control-' + id,
-            'data-variable': this.createVariableData(name, value)
-        });
+        newVariable
+            .attr({
+                'id': 'variable-control-' + id,
+            })
+            .data('variable', this.createVariableData(name, value))
+            .addClass('variable-control')
+        ;
         newVariable.find('label').text(name).attr('for', 'variable-' + id);
         newVariable.find('textarea').val(value).attr('id', 'variable-' + id);
         newVariable.appendTo(this.variablesWrapper);
+        this.setVariablesOutput();
     }
 
     /**
@@ -45,9 +50,10 @@ export default class TemplateBuilder {
      */
     saveVariable(id, name, value) {
         let variableControl = $('#variable-control-' + id);
-        variableControl.attr('data-variable', this.createVariableData(name, value));
+        variableControl.data('variable', this.createVariableData(name, value));
         variableControl.find('label').text(name);
         variableControl.find('textarea').val(value);
+        this.setVariablesOutput();
     }
 
     /**
@@ -56,7 +62,7 @@ export default class TemplateBuilder {
      * @returns {Object}
      */
     getVariableData(variableControl) {
-        const variable = JSON.parse(variableControl.attr('data-variable'));
+        const variable = variableControl.data('variable');
         return {
             'id': variableControl.attr('id').replace('variable-control-', ''),
             'name': variable.name,
@@ -71,11 +77,22 @@ export default class TemplateBuilder {
      * @returns {string}
      */
     createVariableData(name, value) {
-        return JSON.stringify({
+        return {
             "name": name,
             "type": "text",
             "value": value
+        };
+    }
+
+    /**
+     * Set variables data to the form field
+     */
+    setVariablesOutput() {
+        let data = [];
+        $('.variable-control').each(function () {
+            data.push($(this).data('variable'));
         });
+        this.variablesOutput.val(JSON.stringify(data));
     }
 
 }

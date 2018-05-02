@@ -1,7 +1,7 @@
 @import './layout.css';
 @import './template.css';
 
-#text textarea {
+#template_text {
     min-height: 200px;
 }
 

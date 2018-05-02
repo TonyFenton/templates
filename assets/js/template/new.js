@@ -24,6 +24,7 @@ $(function () {
     /* Removing a variable */
     builder.removeBtn.on('click', function () {
         $(this).closest('.variable-control').remove();
+        builder.setVariablesOutput();
     });
 
     /* Editing a variable */
