@@ -9,6 +9,7 @@ export default class TemplateModal {
         this.saveBtn = $('#save-variable');
         this.variableName = $('#variable-name');
         this.variableValue = $('#variable-value');
+        this.variableDesc = $('#variable-desc');
         this.variableId = $('#variable-id');
     };
 
@@ -18,6 +19,7 @@ export default class TemplateModal {
     clear() {
         this.variableName.val('');
         this.variableValue.val('');
+        this.variableDesc.val('');
         this.variableId.val('');
     }
 
@@ -46,11 +48,13 @@ export default class TemplateModal {
      * @param {int} id
      * @param {string} name
      * @param {string} value
+     * @param {string} desc
      */
-    setVariable(id, name, value) {
+    setVariable(id, name, value, desc) {
         this.variableId.val(id);
         this.variableName.val(name);
         this.variableValue.val(value);
+        this.variableDesc.val(desc);
     }
 
 }

@@ -16,13 +16,13 @@ $(function () {
 
     /* Editing a variable */
     builder.editBtn.on('click', function () {
-        console.log('asdf');
         modal.displayEditView();
         const variable = builder.getVariableData($(this).closest('.variable-control'));
         modal.setVariable(
             variable.id,
             variable.name,
-            variable.value
+            variable.value,
+            variable.desc
         );
     });
 
@@ -38,7 +38,8 @@ $(function () {
     modal.createBtn.on('click', function () {
         builder.createVariable(
             modal.variableName.val(),
-            modal.variableValue.val()
+            modal.variableValue.val(),
+            modal.variableDesc.val()
         );
     });
 
@@ -47,7 +48,8 @@ $(function () {
         builder.saveVariable(
             modal.variableId.val(),
             modal.variableName.val(),
-            modal.variableValue.val()
+            modal.variableValue.val(),
+            modal.variableDesc.val()
         );
     });
 
