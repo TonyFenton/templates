@@ -24,8 +24,7 @@
                         </div>
                     {% endfor %}
                 </div>
-                <div id="text">
-                    {% spaceless %}
+                <div id="text">{% spaceless %}
                         {% for item in template.textToView %}
                             {% if item.variableId is same as(false) %}
                                 <span>{{ item.content }}</span>
@@ -33,8 +32,7 @@
                                 <span class="variable-{{ item.variableId }}"></span>
                             {% endif %}
                         {% endfor %}
-                    {% endspaceless %}
-                </div>
+                    {% endspaceless %}</div>
                 <div id="action-panel">
                     <button type="button" class="copy-btn btn btn-outline-success">Copy</button>
                     <button type="button" class="reset-btn btn btn-outline-danger">Reset</button>
