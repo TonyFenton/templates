@@ -1,0 +1,10 @@
+<div class="list-group">
+    <a class="list-group-item list-group-item-success" href="{{ path('template_new') }}">
+        New Template
+    </a>
+    {% for template in templates %}
+        <a class="list-group-item" href="{{ path('template', {id: template.id}) }}">
+            {{ template.name }}
+        </a>
+    {% endfor %}
+</div>
