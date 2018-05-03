@@ -60,7 +60,12 @@ class Template
         return $this;
     }
 
-    public function getVariables(): array
+    public function getVariables(): ?string
+    {
+        return $this->variables;
+    }
+
+    public function getDecodedVariables(): array
     {
         return json_decode($this->variables);
     }
@@ -82,7 +87,7 @@ class Template
     public function getTextToView(): array
     {
         $text = [['content' => $this->getText(), 'variableId' => false]];
-        foreach ($this->getVariables() as $id => $variable) {
+        foreach ($this->getDecodedVariables() as $id => $variable) {
             $textTemp = [];
             foreach ($text as $item) {
                 if (false === $item['variableId']) {

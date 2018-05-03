@@ -95,4 +95,15 @@ export default class TemplateBuilder {
         this.variablesOutput.val(JSON.stringify(data));
     }
 
+    /**
+     * Create variables from the form field
+     */
+    createVariablesFromOutput() {
+        let thisObj = this;
+        let output = JSON.parse(this.variablesOutput.val());
+        $.each(output, function(index, variable) {
+            thisObj.createVariable(variable.name, variable.value)
+        });
+    }
+
 }

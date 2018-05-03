@@ -47,7 +47,35 @@ class TemplateController extends AbstractController
             return $this->redirectToRoute('template_new');
         }
 
-        return $this->render('template/new.html.twig', [
+        return $this->render('template/new_edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * Edit a template
+     * @Route("/template/{id}/edit", name="template_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     */
+    public function edit(Request $request, EntityManagerInterface $em, int $id)
+    {
+        $template = $em->getRepository(Template::class)->find($id);
+
+        if (null === $template) {
+            throw $this->createNotFoundException('No template found');
+        }
+
+        $form = $this->createForm(TemplateType::class, $template);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->merge($template);
+            $em->flush();
+
+            return $this->redirectToRoute('template', ['id' => $template->getId()]);
+        }
+
+        return $this->render('template/new_edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
