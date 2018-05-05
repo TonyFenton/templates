@@ -13,14 +13,17 @@
             <div id="template" class="jumbotron">
                 <div id="text-control">
                     {% for index, variable in template.decodedVariables %}
-                        <div>
-                            <label for="variable-control-{{ index }}">{{ variable.name }}:</label> <textarea
+                        <div class="form-group row">
+                            <label class="col-form-label col-sm-2 form-control-label" for="variable-control-{{ index }}">{{ variable.name }}</label>
+                            <div class="col-sm-10">
+                            <textarea
                                     id="variable-control-{{ index }}"
                                     class="form-control text-variable-control variable-control"
                                     data-variable-id="{{ index }}"
                                     data-variable-name="{{ variable.name }}"
                                     placeholder="{{ variable.desc }}"
                             >{{ variable.value }}</textarea>
+                            </div>
                         </div>
                     {% endfor %}
                 </div>

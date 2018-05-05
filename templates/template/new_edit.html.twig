@@ -15,11 +15,19 @@
                 <div id="text-control">
                     <div id="variables-wrapper">
                         {# text variable prototype #}
-                        <div id="text-variable-prototype" data-variable="{}">
-                            <button type="button" class="btn btn-outline-secondary remove-btn">Remove</button>
-                            <label for="variable-control-1"></label><span>: </span>
-                            <textarea class="form-control text-variable-control" readonly="readonly"></textarea>
-                            <button type="button" class="btn btn-outline-secondary edit-btn" data-toggle="modal" data-target="#variable-modal">Edit</button>
+                        <div class="form-group row" id="text-variable-prototype" data-variable="{}">
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-outline-secondary remove-btn">r</button>
+                                <label for="variable-control-1"></label>
+                            </div>
+                            <div class="col-sm-8">
+                                <textarea class="form-control text-variable-control" readonly="readonly"></textarea>
+                            </div>
+                            <div class="col-sm-1">
+                                <button type="button" class="btn btn-outline-secondary edit-btn" data-toggle="modal"
+                                        data-target="#variable-modal">e
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <button id="add-variable-btn" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#variable-modal">Add</button>
@@ -45,17 +53,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div>
-                        <label for="variable-name">Name: </label>
-                        <input id="variable-name" type="text" class="form-control"/>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 form-control-label" for="variable-name">Name</label>
+                        <div class="col-sm-10"><input id="variable-name" type="text" class="form-control"/></div>
                     </div>
-                    <div>
-                        <label for="variable-value">Value: </label>
-                        <textarea id="variable-value" class="form-control"></textarea>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 form-control-label" for="variable-value">Value</label>
+                        <div class="col-sm-10"><textarea id="variable-value" class="form-control"></textarea></div>
                     </div>
-                    <div>
-                        <label for="variable-desc">Description: </label>
-                        <textarea id="variable-desc" class="form-control"></textarea>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 form-control-label" for="variable-desc">Description</label>
+                        <div class="col-sm-10"><textarea id="variable-desc" class="form-control"></textarea></div>
                     </div>
                     <input id="variable-id" type="hidden" class="form-control"/>
                 </div>

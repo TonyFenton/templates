@@ -1,5 +1,6 @@
 require('./../../css/template/new_edit.css');
 require('bootstrap/dist/js/bootstrap.min');
+import './../base.js'
 import TemplateBuilder from './TemplateBuilder.js'
 import TemplateModal from './TemplateModal.js'
 

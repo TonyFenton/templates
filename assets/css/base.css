@@ -3,3 +3,8 @@
 body {
     background-color: #f7f7f7;
 }
+
+textarea {
+    min-height: 38px;
+    overflow: hidden;
+}

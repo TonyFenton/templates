@@ -1,4 +1,5 @@
 require('./../../css/template/index.css');
+import './../base.js'
 import Template from './Template.js'
 import Effect from './../Effect.js'
 

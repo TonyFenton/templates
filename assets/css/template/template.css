@@ -18,15 +18,7 @@
 }
 
 .text-variable-control {
-    display: inline;
-    height: 24px;
-    width: auto;
-    resize: both;
-    padding: 0 5px;
-    margin: 0;
-    vertical-align: top;
-    overflow: hidden;
-    line-height: 1.4;
+   height: 38px;
 }
 
 #action-panel {
