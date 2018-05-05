@@ -7,6 +7,7 @@ export default class TemplateModal {
         this.label = $('#variable-modal-label');
         this.createBtn = $('#create-variable');
         this.saveBtn = $('#save-variable');
+        this.removeBtn = $('#remove-variable');
         this.variableName = $('#variable-name');
         this.variableValue = $('#variable-value');
         this.variableDesc = $('#variable-desc');
@@ -31,6 +32,7 @@ export default class TemplateModal {
         this.label.text('New');
         this.createBtn.show();
         this.saveBtn.hide();
+        this.removeBtn.hide();
     }
 
     /**
@@ -41,6 +43,7 @@ export default class TemplateModal {
         this.label.text('Edit');
         this.createBtn.hide();
         this.saveBtn.show();
+        this.removeBtn.show();
     }
 
     /**

@@ -16,16 +16,13 @@
                     <div id="variables-wrapper">
                         {# text variable prototype #}
                         <div class="form-group row" id="text-variable-prototype" data-variable="{}">
-                            <div class="col-sm-3">
-                                <button type="button" class="btn btn-outline-secondary remove-btn">r</button>
-                                <label for="variable-control-1"></label>
-                            </div>
+                            <label class="col-form-label col-sm-2 form-control-label" for=""></label>
                             <div class="col-sm-8">
                                 <textarea class="form-control text-variable-control" readonly="readonly"></textarea>
                             </div>
-                            <div class="col-sm-1">
+                            <div class="col-sm-2">
                                 <button type="button" class="btn btn-outline-secondary edit-btn" data-toggle="modal"
-                                        data-target="#variable-modal">e
+                                        data-target="#variable-modal">Edit
                                 </button>
                             </div>
                         </div>
@@ -68,6 +65,8 @@
                     <input id="variable-id" type="hidden" class="form-control"/>
                 </div>
                 <div class="modal-footer">
+                    <button id="remove-variable" type="button" class="btn btn-outline-danger" data-dismiss="modal">Remove</button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                     <button id="save-variable" type="button" class="btn btn-outline-success" data-dismiss="modal">Save</button>
                     <button id="create-variable" type="button" class="btn btn-outline-success" data-dismiss="modal">Create</button>
                 </div>

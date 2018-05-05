@@ -9,12 +9,6 @@ $(function () {
     const modal = new TemplateModal();
     const builder = new TemplateBuilder();
 
-    /* Removing a variable */
-    builder.removeBtn.on('click', function () {
-        $(this).closest('.variable-control').remove();
-        builder.setVariablesOutput();
-    });
-
     /* Editing a variable */
     builder.editBtn.on('click', function () {
         modal.displayEditView();
@@ -33,6 +27,11 @@ $(function () {
     /* Adding a variable */
     builder.addBtn.on('click', function () {
         modal.displayNewView();
+    });
+
+    /* Removing a variable */
+    modal.removeBtn.on('click', function () {
+        builder.removeVariable(modal.variableId.val());
     });
 
     /* Creating a variable */

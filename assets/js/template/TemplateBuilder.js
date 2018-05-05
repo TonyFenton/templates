@@ -4,9 +4,8 @@
 export default class TemplateBuilder {
 
     constructor() {
-        this.id = 100;
+        this.id = 0;
         this.addBtn = $('#add-variable-btn');
-        this.removeBtn = $('.remove-btn');
         this.editBtn = $('.edit-btn');
         this.variablesWrapper = $('#variables-wrapper');
         this.textVariablePrototype = $('#text-variable-prototype');
@@ -53,6 +52,15 @@ export default class TemplateBuilder {
         variableControl.data('variable', this.createVariableData(name, value, desc));
         variableControl.find('label').text(name);
         variableControl.find('textarea').val(value).attr('placeholder', desc);
+        this.setVariablesOutput();
+    }
+
+    /**
+     * Remove a variable
+     * @param id
+     */
+    removeVariable(id) {
+        $('#variable-control-' + id).remove();
         this.setVariablesOutput();
     }
 
