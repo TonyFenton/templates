@@ -8,3 +8,30 @@
 #text-variable-prototype {
     display: none;
 }
+
+#template_name {
+    margin-bottom: 20px;
+    font-size: 1.75rem;
+}
+
+#add-variable {
+    width: 100%;
+}
+
+#variable-name-left-bracket,
+#variable-name-right-bracket {
+    position: absolute;
+    top: 6px;
+}
+
+#variable-name-left-bracket {
+    left: 21px;
+}
+
+#variable-name-right-bracket {
+    right: 21px;
+}
+
+#variables-wrapper .text-variable-control {
+    background-color: #f7f7f7;
+}

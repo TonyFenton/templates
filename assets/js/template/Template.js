@@ -16,7 +16,7 @@ export default class Template {
      * @param {int} id
      */
     pointVariable(id) {
-        $('.variable-' + id).css({'color': '#002db3', 'font-weight': 'bold'});
+        $('.variable-' + id).css('font-weight', 'bold');
     };
 
     /**
@@ -24,7 +24,7 @@ export default class Template {
      * @param {int} id
      */
     unpointVariable(id) {
-        $('.variable-' + id).css({'color': '', 'font-weight': ''});
+        $('.variable-' + id).css('font-weight', '');
     };
 
     /**

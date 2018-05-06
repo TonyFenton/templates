@@ -5,7 +5,7 @@ export default class TemplateBuilder {
 
     constructor() {
         this.id = 0;
-        this.addBtn = $('#add-variable-btn');
+        this.addBtn = $('#add-variable');
         this.editBtn = $('.edit-btn');
         this.variablesWrapper = $('#variables-wrapper');
         this.textVariablePrototype = $('#text-variable-prototype');

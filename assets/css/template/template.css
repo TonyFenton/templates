@@ -1,20 +1,17 @@
 #template {
-    background-color: #f9f9f9;
     font-family: serif;
-    padding: 30px;
-    border: 1px solid #cccccc;
+    margin-bottom: 50px;
 }
 
 #text-control {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #cccccc;
+    margin-top: 7px;
+    padding-left: 13px;
 }
 
-#action-panel {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #cccccc;
+#text,
+#template_text {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .text-variable-control {

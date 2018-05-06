@@ -8,3 +8,9 @@
 .copy-btn {
     margin-right: 33%;
 }
+
+#text {
+    padding: 15px;
+    background-color: #f7f7f7;
+    border: 1px solid #ced4da;
+}
