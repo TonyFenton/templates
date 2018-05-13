@@ -23,13 +23,14 @@
                         <div class="form-group row">
                             <label class="col-form-label col-sm-2 form-control-label" for="variable-control-{{ index }}">{{ variable.name }}</label>
                             <div class="col-sm-10">
-                            <textarea
-                                    id="variable-control-{{ index }}"
-                                    class="form-control text-variable-control variable-control"
-                                    data-variable-id="{{ index }}"
-                                    data-variable-name="{{ variable.name }}"
-                                    placeholder="{{ variable.desc }}"
-                            >{{ variable.value }}</textarea>
+                                <input type="text"
+                                       id="variable-control-{{ index }}"
+                                       class="form-control text-variable-control variable-control"
+                                       data-variable-id="{{ index }}"
+                                       data-variable-name="{{ variable.name }}"
+                                       placeholder="{{ variable.desc }}"
+                                       value="{{ variable.value }}"
+                                />
                             </div>
                         </div>
                     {% endfor %}

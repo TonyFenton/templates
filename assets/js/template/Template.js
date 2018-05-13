@@ -59,4 +59,13 @@ export default class Template {
         this.variableControl.trigger('change');
     };
 
+    /**
+     * Select the first variable
+     */
+    selectFirst() {
+        if (this.variableControl.length) {
+            this.variableControl[0].select();
+        }
+    }
+
 }

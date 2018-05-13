@@ -10,6 +10,7 @@ export default class TemplateBuilder {
         this.variablesWrapper = $('#variables-wrapper');
         this.textVariablePrototype = $('#text-variable-prototype');
         this.variablesOutput = $('#template_variables');
+        this.name = $('#template_name');
     };
 
     /**
@@ -35,7 +36,7 @@ export default class TemplateBuilder {
             .addClass('variable-control')
         ;
         newVariable.find('label').text(name).attr('for', 'variable-' + id);
-        newVariable.find('textarea').val(value).attr({'id': 'variable-' + id, 'placeholder': desc});
+        newVariable.find('input').val(value).attr({'id': 'variable-' + id, 'placeholder': desc});
         newVariable.appendTo(this.variablesWrapper);
         this.setVariablesOutput();
     }
@@ -51,7 +52,7 @@ export default class TemplateBuilder {
         let variableControl = $('#variable-control-' + id);
         variableControl.data('variable', this.createVariableData(name, value, desc));
         variableControl.find('label').text(name);
-        variableControl.find('textarea').val(value).attr('placeholder', desc);
+        variableControl.find('input').val(value).attr('placeholder', desc);
         this.setVariablesOutput();
     }
 
