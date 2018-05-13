@@ -8,21 +8,30 @@ $(function () {
     const template = new Template();
 
     /* seting variables value */
-    template.variableControl.on('change input', function () {
+    template.variableControl.each(function () {
         template.setVariable(
             $(this).data('variable-id'),
-            $(this).data('variable-name'),
-            $(this).val()
+            $(this).val(),
         );
     });
-    template.variableControl.trigger('change');
+    template.variableControl.on('input', function () {
+        template.setVariable(
+            $(this).data('variable-id'),
+            $(this).val(),
+        );
+        template.setVariableName(
+            $(this).data('variable-id'),
+            $(this).data('variable-name'),
+            $(this).val(),
+        );
+    });
 
     /* pointing variables */
     template.variableControl.on('focus', function () {
-        template.pointVariable($(this).data('variable-id'));
+        template.pointVariable($(this).data('variable-id'), $(this).data('variable-name'), $(this).val());
     });
     template.variableControl.on('blur', function () {
-        template.unpointVariable($(this).data('variable-id'));
+        template.unpointVariable($(this).data('variable-id'), $(this).val() );
     });
 
     /* a template actions */

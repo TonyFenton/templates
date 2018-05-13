@@ -14,17 +14,33 @@ export default class Template {
     /**
      * Style a variable
      * @param {int} id
+     * @param {string} name
      */
-    pointVariable(id) {
+    pointVariable(id, name, value) {
+        this.setVariableName(id, name, value);
         $('.variable-' + id).css('font-weight', 'bold');
     };
 
     /**
      * Remove a point variable style
      * @param {int} id
+     * @param {string} variableControlValue
      */
-    unpointVariable(id) {
-        $('.variable-' + id).css('font-weight', '');
+    unpointVariable(id, variableControlValue) {
+        const variable = $('.variable-' + id);
+        if ('' === variableControlValue) {
+            variable.text('');
+        }
+        variable.css('font-weight', '');
+    };
+
+    /**
+     * Set a variable value
+     * @param {int} id
+     * @param {string} value
+     */
+    setVariable(id, value) {
+        $('.variable-' + id).text(value);
     };
 
     /**
@@ -33,12 +49,11 @@ export default class Template {
      * @param {string} name
      * @param {string} value
      */
-    setVariable(id, name, value) {
+    setVariableName(id, name, value) {
         if ('' === value) {
-            value = '{' + name + '}';
+            $('.variable-' + id).text('{' + name + '}');
         }
-        $('.variable-' + id).text(value);
-    };
+    }
 
     /**
      * Copy text
