@@ -4,26 +4,37 @@ namespace App\Controller;
 
 use App\Entity\Template;
 use App\Form\TemplateType;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\TemplateRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TemplateController extends AbstractController
 {
+
+    /**
+     * @Route("/template", name="template_index", methods={"GET"})
+     */
+    public function index(TemplateRepository $templateRepository): Response
+    {
+        return $this->render('template/index.html.twig', ['templates' => $templateRepository->findAll()]);
+    }
+
     /**
      * Display a template
-     * @Route("/template/{id}", name="template", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/template/{id}", name="template_show", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function index(EntityManagerInterface $em, int $id)
+    public function show(int $id): Response
     {
+        $em = $this->getDoctrine()->getManager();
         $template = $em->getRepository(Template::class)->find($id);
 
         if (null === $template) {
             throw $this->createNotFoundException('No template found');
         }
 
-        return $this->render('template/index.html.twig', [
+        return $this->render('template/show.html.twig', [
             'template' => $template,
         ]);
     }
@@ -32,7 +43,7 @@ class TemplateController extends AbstractController
      * Create a template
      * @Route("/template/new", name="template_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $em)
+    public function new(Request $request): Response
     {
         $template = new Template();
         $form = $this->createForm(TemplateType::class, $template);
@@ -41,6 +52,7 @@ class TemplateController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $em = $this->getDoctrine()->getManager();
             $em->persist($template);
             $em->flush();
 
@@ -56,8 +68,9 @@ class TemplateController extends AbstractController
      * Edit a template
      * @Route("/template/{id}/edit", name="template_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
-    public function edit(Request $request, EntityManagerInterface $em, int $id)
+    public function edit(Request $request, int $id): Response
     {
+        $em = $this->getDoctrine()->getManager();
         $template = $em->getRepository(Template::class)->find($id);
 
         if (null === $template) {
@@ -68,16 +81,30 @@ class TemplateController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $em->merge($template);
             $em->flush();
 
-            return $this->redirectToRoute('template', ['id' => $template->getId()]);
+            return $this->redirectToRoute('template_show', ['id' => $template->getId()]);
         }
 
         return $this->render('template/new_edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * Delete a template
+     * @Route("/template/{id}", name="template_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Template $template): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$template->getId(), $request->request->get('_token'))) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($template);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('template_index');
+    }
+
 
 }

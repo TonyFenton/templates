@@ -2,56 +2,38 @@
 
 {% block title %}Template{% endblock %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('build/template.css') }}">
-{% endblock %}
-
 {% block content %}
-    <div class="row">
-        <div class="col-sm">
-            <div class="row">
-                <div class="col-sm-10">
-                    <h3>{{ template.name }}</h3>
-                </div>
-                <div class="col-sm-2">
-                    <a href="{{ path('template_edit', {id: template.id}) }}">Edit</a>
-                </div>
-            </div>
-            <div id="template">
-                <div id="text-control">
-                    {% for index, variable in template.decodedVariables %}
-                        <div class="form-group row">
-                            <label class="col-form-label col-sm-2 form-control-label" for="variable-control-{{ index }}">{{ variable.name }}</label>
-                            <div class="col-sm-10">
-                            <textarea
-                                    id="variable-control-{{ index }}"
-                                    class="form-control text-variable-control variable-control"
-                                    data-variable-id="{{ index }}"
-                                    data-variable-name="{{ variable.name }}"
-                                    placeholder="{{ variable.desc }}"
-                            >{{ variable.value }}</textarea>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div id="text" class="jumbotron">{% spaceless %}
-                        {% for item in template.textToView %}
-                            {% if item.variableId is same as(false) %}
-                                <span>{{ item.content }}</span>
-                            {% else %}
-                                <span class="variable-{{ item.variableId }}"></span>
-                            {% endif %}
-                        {% endfor %}
-                    {% endspaceless %}</div>
-                <div id="action-panel">
-                    <button type="button" class="copy-btn btn btn-success">Copy</button>
-                    <button type="button" class="reset-btn btn btn-danger">Reset</button>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+    <h1>template index</h1>
 
-{% block javascripts %}
-    <script src="{{ asset('build/template.js') }}"></script>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Text</th>
+            <th>Variables</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for template in templates %}
+            <tr>
+                <td>{{ template.id }}</td>
+                <td>{{ template.name }}</td>
+                <td>{{ template.text }}</td>
+                <td>{{ template.variables }}</td>
+                <td>
+                    <a href="{{ path('template_show', {'id': template.id}) }}">show</a>
+                    <a href="{{ path('template_edit', {'id': template.id}) }}">edit</a>
+                    {{ include('template/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

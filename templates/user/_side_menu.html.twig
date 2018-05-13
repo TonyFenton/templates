@@ -3,7 +3,7 @@
         New Template
     </a>
     {% for template in templates %}
-        <a class="list-group-item" href="{{ path('template', {id: template.id}) }}">
+        <a class="list-group-item" href="{{ path('template_show', {id: template.id}) }}">
             {{ template.name }}
         </a>
     {% endfor %}
