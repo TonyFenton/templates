@@ -10,10 +10,15 @@ $(function () {
     const modal = new TemplateModal();
     const builder = new TemplateBuilder();
 
-    /* Selecting name for new action */
+    /* Selecting a name for new action */
     if('' === builder.name.val()) {
         builder.name.focus();
     }
+
+    /* Selecting a name on a modal */
+    modal.modal.on('shown.bs.modal', function () {
+        modal.variableName.select();
+    });
 
     /* Editing a variable */
     builder.editBtn.on('click', function () {

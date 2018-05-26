@@ -4,6 +4,7 @@
 export default class TemplateModal {
 
     constructor() {
+        this.modal = $('#variable-modal');
         this.label = $('#variable-modal-label');
         this.createBtn = $('#create-variable');
         this.saveBtn = $('#save-variable');
