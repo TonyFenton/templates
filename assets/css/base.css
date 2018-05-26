@@ -16,8 +16,3 @@ nav {
 .form-group {
     margin-bottom: 0.5rem;
 }
-
-textarea {
-    min-height: 38px;
-    overflow: hidden;
-}

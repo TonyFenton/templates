@@ -2,7 +2,7 @@
 @import './template.css';
 
 #template_text {
-    min-height: 300px;
+    height: 300px;
 }
 
 #text-variable-prototype {
