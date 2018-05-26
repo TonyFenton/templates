@@ -8,10 +8,9 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-sm">
+        <div id="template" class="col-sm">
             {{ form_start(form) }}
             {{ form_row(form.name) }}
-            <div id="template">
                 <div id="text-control">
                     <div id="variables-wrapper">
                         {# text variable prototype #}
@@ -24,6 +23,9 @@
                                 <button type="button" class="btn btn-secondary edit-btn" data-toggle="modal"
                                         data-target="#variable-modal">Edit
                                 </button>
+                                <span class="sortable-handle">
+                                    Sort
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -33,7 +35,6 @@
                 <div id="action-panel">
                     <input type="submit" value="Save" class="copy-btn btn btn-success"/>
                 </div>
-            </div>
             {{ form_end(form) }}
         </div>
     </div>

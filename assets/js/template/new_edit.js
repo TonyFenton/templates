@@ -1,5 +1,6 @@
 require('./../../css/template/new_edit.css');
 require('bootstrap/dist/js/bootstrap.min');
+require('jquery-ui-sortable-npm/jquery-ui-sortable.min');
 import './../base.js'
 import TemplateBuilder from './TemplateBuilder.js'
 import TemplateModal from './TemplateModal.js'
@@ -56,6 +57,28 @@ $(function () {
             modal.variableValue.val(),
             modal.variableDesc.val()
         );
+    });
+
+    /* Sorting variables */
+    builder.variablesWrapper.sortable({
+        containment: "body",
+        handle: ".sortable-handle",
+        cursor: "move",
+        axis: 'y',
+        placeholder: "sortable-placeholder",
+        forcePlaceholderSize: true,
+        start: function(e, ui) {
+            ui.item.addClass('sortable-start');
+        },
+        stop: function(e, ui) {
+            ui.item.removeClass('sortable-start');
+        }
+    });
+
+    /* Submiting a form */
+    builder.form.on('submit', function(event) {
+        builder.setVariablesOutput();
+        return true;
     });
 
 });

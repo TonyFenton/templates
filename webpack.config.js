@@ -12,7 +12,7 @@ Encore
 
     // uncomment to define the assets of the project
     .addEntry('base', './assets/js/base.js')
-    .addStyleEntry('base', './assets/css/base.css')
+    .addStyleEntry('base_style', './assets/css/base.css')
     .addStyleEntry('template_layout', './assets/css/template/layout.css')
     .addEntry('template_new_edit', './assets/js/template/new_edit.js')
     .addEntry('template_show', './assets/js/template/show.js')

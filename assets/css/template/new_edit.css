@@ -35,3 +35,28 @@
 #variables-wrapper .text-variable-control {
     background-color: #f7f7f7;
 }
+
+.sortable-handle {
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+.sortable-handle:active {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+
+.variable-control {
+    margin: 10px 0px;
+}
+
+.sortable-placeholder {
+    margin: 10px 3px;
+    background-color: #ffeb99;
+    border-radius: 5px;
+}
+
+.sortable-start {
+    background-color: #ced4da;
+    border-radius: 5px;
+}
