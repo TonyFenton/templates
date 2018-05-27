@@ -56,7 +56,9 @@ class TemplateController extends AbstractController
             $em->persist($template);
             $em->flush();
 
-            return $this->redirectToRoute('template_new');
+            $this->addFlash('success', 'The template has been created.');
+
+            return $this->redirectToRoute('template_show', ['id' => $template->getId()]);
         }
 
         return $this->render('template/new_edit.html.twig', [
@@ -83,6 +85,8 @@ class TemplateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
 
+            $this->addFlash('success', 'Your changes have been saved.');
+
             return $this->redirectToRoute('template_show', ['id' => $template->getId()]);
         }
 
@@ -101,6 +105,8 @@ class TemplateController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($template);
             $em->flush();
+
+            $this->addFlash('success', 'The template has been deleted.');
         }
 
         return $this->redirectToRoute('template_index');

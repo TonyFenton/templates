@@ -1,7 +1,6 @@
 require('./../../css/template/new_edit.css');
-require('bootstrap/dist/js/bootstrap.min');
 require('jquery-ui-sortable-npm/jquery-ui-sortable.min');
-import './../base.js'
+require('./../base.js');
 import TemplateBuilder from './TemplateBuilder.js'
 import TemplateModal from './TemplateModal.js'
 
