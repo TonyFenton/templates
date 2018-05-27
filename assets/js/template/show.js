@@ -9,21 +9,11 @@ $(function () {
 
     /* seting variables value */
     template.variableControl.each(function () {
-        template.setVariable(
-            $(this).data('variable-id'),
-            $(this).val(),
-        );
+        template.setVariable($(this).data('variable-id'), $(this).val());
     });
     template.variableControl.on('input', function () {
-        template.setVariable(
-            $(this).data('variable-id'),
-            $(this).val(),
-        );
-        template.setVariableName(
-            $(this).data('variable-id'),
-            $(this).data('variable-name'),
-            $(this).val(),
-        );
+        template.setVariable($(this).data('variable-id'), $(this).val());
+        template.setVariableName($(this).data('variable-id'), $(this).data('variable-name'), $(this).val());
     });
 
     /* pointing variables */

@@ -64,14 +64,19 @@ export default class Template {
         temp.val(this.text.text()).select();
         document.execCommand('copy');
         temp.remove();
+        this.resetBtn.focus();
     };
 
     /**
      * Reset variables
      */
     reset() {
-        this.variableControl.val('');
-        this.variableControl.trigger('change');
+        let thisObj = this;
+        this.variableControl.each(function () {
+            $(this).val($(this).data('variable-value'));
+            thisObj.setVariable($(this).data('variable-id'), $(this).val(),);
+        });
+        this.selectFirst();
     };
 
     /**
@@ -79,6 +84,7 @@ export default class Template {
      */
     selectFirst() {
         if (this.variableControl.length) {
+            this.variableControl[0].focus();
             this.variableControl[0].select();
         }
     }
