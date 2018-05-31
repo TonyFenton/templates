@@ -1,0 +1,13 @@
+{% extends 'user/layout.html.twig' %}
+
+{% block title %}Edit folder{% endblock %}
+
+{% block content %}
+    <h3>Edit the folder</h3>
+
+    {{ include('folder/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <br/>
+
+    <a class="btn btn-primary" role="button" href="{{ path('folder_index') }}">Back to list</a>
+{% endblock %}

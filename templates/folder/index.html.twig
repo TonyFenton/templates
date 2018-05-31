@@ -1,0 +1,38 @@
+{% extends 'user/layout.html.twig' %}
+
+{% block title %}Folders{% endblock %}
+
+{% block content %}
+
+    {% include "_flash_messages.html.twig" %}
+
+    <h3>Folders</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for folder in folders %}
+            <tr>
+                <td>{{ folder.name }}</td>
+                <td>
+                    <a class="btn btn-primary" role="button" href="{{ path('folder_edit', {'id': folder.id}) }}">Edit</a>
+                </td>
+                <td>
+                    {{ include('folder/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" role="button" href="{{ path('folder_new') }}">Create new</a>
+{% endblock %}
