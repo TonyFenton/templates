@@ -31,6 +31,12 @@ class Template
      */
     private $variables = '[]';
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Folder", inversedBy="templates")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $folder;
+
     public function getId()
     {
         return $this->id;
@@ -107,5 +113,17 @@ class Template
         }
 
         return $text;
+    }
+
+    public function getFolder(): ?Folder
+    {
+        return $this->folder;
+    }
+
+    public function setFolder(?Folder $folder): self
+    {
+        $this->folder = $folder;
+
+        return $this;
     }
 }
