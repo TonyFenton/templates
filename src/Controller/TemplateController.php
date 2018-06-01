@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Folder;
 use App\Entity\Template;
 use App\Form\TemplateType;
 use App\Repository\TemplateRepository;
@@ -41,11 +42,13 @@ class TemplateController extends AbstractController
 
     /**
      * Create a template
+     * @Route("/template/new/folder/{folder}", name="template_new_folder", methods={"GET", "POST"})
      * @Route("/template/new", name="template_new", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Folder $folder = null): Response
     {
         $template = new Template();
+        $template->setFolder($folder);
         $form = $this->createForm(TemplateType::class, $template);
 
         $form->handleRequest($request);

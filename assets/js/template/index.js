@@ -9,7 +9,7 @@ $(function () {
     $('#templates').DataTable({
         columnDefs: [
             {
-                targets: 1,
+                targets: 2,
                 searchable: false,
                 sorting: false
             }

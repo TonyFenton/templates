@@ -10,6 +10,15 @@
     <div class="row">
         <div class="col-sm">
             {% include "_flash_messages.html.twig" %}
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">{{ template.folder.name }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ template.name }}</li>
+                </ol>
+            </nav>
+
+
             <div class="row">
                 <div class="col-sm-10">
                     <h3>{{ template.name }}</h3>

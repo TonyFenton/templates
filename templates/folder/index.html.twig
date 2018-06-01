@@ -34,10 +34,13 @@
                 <td class="align-middle" width="75">{{ folder.name }}</td>
                 <td width="15">
                     <div class="row">
-                        <div class="col-6 text-center">
+                        <div class="col-4 text-center">
+                            <a class="btn btn-success" role="button" href="{{ path('template_new_folder', {'id': folder.id}) }}">Add a template</a>
+                        </div>
+                        <div class="col-4 text-center">
                             <a class="btn btn-primary" role="button" href="{{ path('folder_edit', {'id': folder.id}) }}">Edit</a>
                         </div>
-                        <div class="col-6 text-center">
+                        <div class="col-4 text-center">
                             {{ include('folder/_delete_form.html.twig') }}
                         </div>
                     </div>

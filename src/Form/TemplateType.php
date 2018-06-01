@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Folder;
 use App\Entity\Template;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,9 +16,13 @@ class TemplateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, [
-                'label' => false,
-                'attr' => ['placeholder' => 'Name',],
+            ->add('name')
+            ->add('folder', EntityType::class, [
+                'class' => Folder::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('f')
+                        ->orderBy('f.name', 'ASC');
+                },
             ])
             ->add('text', null, [
                 'label' => false,

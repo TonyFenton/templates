@@ -24,14 +24,16 @@
     <table id="templates" class="table table-bordered table-hover">
         <thead>
         <tr>
-            <th width="75">Name</th>
+            <th width="50">Name</th>
+            <th width="35">Folder</th>
             <th width="15">Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for template in templates %}
             <tr>
-                <td width="75">{{ template.name }}</td>
+                <td width="50">{{ template.name }}</td>
+                <td width="35">{{ template.folder.name }}</td>
                 <td width="15">
                     <div class="row">
                         <div class="col-4 text-center">
