@@ -1,34 +1,49 @@
 {% extends 'user/layout.html.twig' %}
 
-{% block title %}Template{% endblock %}
+{% block title %}Templates{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/template_index.css') }}">
+{% endblock %}
 
 {% block content %}
 
     {% include "_flash_messages.html.twig" %}
 
-    <h1>template index</h1>
+    <div class="row">
+        <div class="col-10">
+            <h3>Templates</h3>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-success" role="button" href="{{ path('template_new') }}">Create new</a>
+        </div>
+    </div>
 
-    <table class="table">
+    <br/>
+
+    <table id="templates" class="table table-bordered table-hover">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Text</th>
-            <th>Variables</th>
-            <th>actions</th>
+            <th width="75">Name</th>
+            <th width="15">Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for template in templates %}
             <tr>
-                <td>{{ template.id }}</td>
-                <td>{{ template.name }}</td>
-                <td>{{ template.text }}</td>
-                <td>{{ template.variables }}</td>
-                <td>
-                    <a href="{{ path('template_show', {'id': template.id}) }}">show</a>
-                    <a href="{{ path('template_edit', {'id': template.id}) }}">edit</a>
-                    {{ include('template/_delete_form.html.twig') }}
+                <td width="75">{{ template.name }}</td>
+                <td width="15">
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <a class="btn btn-primary" role="button" href="{{ path('template_show', {'id': template.id}) }}">show</a>
+                        </div>
+                        <div class="col-4 text-center">
+                            <a class="btn btn-primary" role="button" href="{{ path('template_edit', {'id': template.id}) }}">edit</a>
+                        </div>
+                        <div class="col-4 text-center">
+                            {{ include('template/_delete_form.html.twig') }}
+                        </div>
+                    </div>
                 </td>
             </tr>
         {% else %}
@@ -39,4 +54,8 @@
         </tbody>
     </table>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/template_index.js') }}"></script>
 {% endblock %}

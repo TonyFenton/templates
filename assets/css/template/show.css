@@ -1,4 +1,4 @@
-@import './layout.css';
+@import './../user/layout.css';
 @import './template.css';
 
 #text span {
