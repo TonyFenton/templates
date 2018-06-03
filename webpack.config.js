@@ -17,6 +17,7 @@ Encore
     .addEntry('template_new_edit', './assets/js/template/new_edit.js')
     .addEntry('template_show', './assets/js/template/show.js')
     .addEntry('folder_index', './assets/js/folder/index.js')
+    .addEntry('folder_content', './assets/js/folder/content.js')
     .addEntry('template_index', './assets/js/template/index.js')
 
     // .addStyleEntry('css/app', './assets/css/app.scss')

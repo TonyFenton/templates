@@ -49,6 +49,14 @@ class FolderController extends Controller
     }
 
     /**
+     * @Route("/{id}", name="folder_content", methods="GET")
+     */
+    public function content(Folder $folder)
+    {
+        return $this->render('folder/content.html.twig', ['folder' => $folder]);
+    }
+
+    /**
      * @Route("/{id}/edit", name="folder_edit", methods="GET|POST")
      */
     public function edit(Request $request, Folder $folder): Response
