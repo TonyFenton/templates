@@ -12,14 +12,17 @@
 
     <div class="row">
         <div class="col-10">
-            <h3>{{ folder.name }}</h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('folder_index') }}">Folders</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ folder.name }}</li>
+                </ol>
+            </nav>
         </div>
         <div class="col-2">
             <a class="btn btn-success" role="button" href="{{ path('folder_edit', {'id': folder.id}) }}">Edit</a>
         </div>
     </div>
-
-    <br/>
 
     <table id="templates" class="table table-bordered table-hover">
         <thead>

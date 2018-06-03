@@ -3,7 +3,13 @@
 {% block title %}Edit folder{% endblock %}
 
 {% block content %}
-    <h3>Edit the folder</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('folder_index') }}">Folders</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('folder_content', {'id': folder.id}) }}">{{ folder.name }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+        </ol>
+    </nav>
 
     {{ include('folder/_form.html.twig', {'button_label': 'Update'}) }}
 

@@ -95,6 +95,7 @@ class TemplateController extends AbstractController
 
         return $this->render('template/new_edit.html.twig', [
             'form' => $form->createView(),
+            'template' => $template,
         ]);
     }
 

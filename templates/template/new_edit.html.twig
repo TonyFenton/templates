@@ -7,6 +7,22 @@
 {% endblock %}
 
 {% block content %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% if template is defined %} {# edit action #}
+                <li class="breadcrumb-item"><a href="{{ path('folder_content', {'id': template.folder.id}) }}">{{ template.folder.name }}</a>
+                </li>
+                <li class="breadcrumb-item"><a href="{{ path('template_show', {'id': template.id}) }}">{{ template.name }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit</li>
+
+            {% else %} {# new action #}
+                <li class="breadcrumb-item"><a href="{{ path('template_index') }}">Templates</a></li>
+                <li class="breadcrumb-item active" aria-current="page">New</li>
+            {% endif %}
+        </ol>
+    </nav>
+
     <div class="row">
         <div id="template" class="col-sm">
             {{ form_start(form) }}
