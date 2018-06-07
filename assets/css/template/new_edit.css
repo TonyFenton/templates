@@ -11,6 +11,8 @@
 
 #add-variable {
     width: 100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 #variable-name-left-bracket,
@@ -54,4 +56,19 @@
 .sortable-start {
     background-color: #ced4da;
     border-radius: 5px;
+}
+
+#text-control {
+    padding-top: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+    border: 1px solid #17a2b8;
+    border-bottom-color: transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+#name-folder-wrapper {
+    padding-left: 15px;
 }
