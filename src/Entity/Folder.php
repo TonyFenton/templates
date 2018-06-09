@@ -24,7 +24,7 @@ class Folder
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="folder")
+     * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="folder", orphanRemoval=true)
      */
     private $templates;
 
