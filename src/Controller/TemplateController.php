@@ -42,7 +42,7 @@ class TemplateController extends AbstractController
 
     /**
      * Create a template
-     * @Route("/template/new/folder/{folder}", name="template_new_folder", methods={"GET", "POST"})
+     * @Route("/template/new/folder/{id}", name="template_new_folder", methods={"GET", "POST"})
      * @Route("/template/new", name="template_new", methods={"GET", "POST"})
      */
     public function new(Request $request, Folder $folder = null): Response
