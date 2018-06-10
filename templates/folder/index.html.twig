@@ -23,6 +23,7 @@
         </div>
     </div>
 
+    <input type="hidden" name="datatables_length" id="datatables-length" value="{{ app.request.cookies.get('datatables_length')|default(25) }}"/>
     <table id="folders" class="table table-bordered table-hover">
         <thead>
             <tr>

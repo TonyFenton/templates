@@ -3,6 +3,7 @@ require('./../../css/datatable.css');
 require('./../base.js');
 require('datatables.net-bs4/js/dataTables.bootstrap4');
 require('datatables.net-bs4/css/dataTables.bootstrap4.css');
+import rememberDataTablesLength from './../datatables_length.js';
 
 $(function () {
 
@@ -13,7 +14,9 @@ $(function () {
                 searchable: false,
                 sorting: false
             }
-        ]
+        ],
+        pageLength: parseInt($('#datatables-length').val())
     });
+    rememberDataTablesLength();
 
 });
