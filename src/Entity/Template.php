@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TemplateRepository")
@@ -18,11 +19,14 @@ class Template
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=255)
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $text;
 
@@ -34,6 +38,7 @@ class Template
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Folder", inversedBy="templates")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private $folder;
 
