@@ -78,9 +78,10 @@ class Template
 
     public function setVariables($variables): self
     {
-        if (null !== $variables) {
-            $this->variables = $variables;
+        if (null === $variables) {
+            $variables = '[]';
         }
+        $this->variables = $variables;
 
         return $this;
     }
