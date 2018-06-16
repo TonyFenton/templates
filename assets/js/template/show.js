@@ -1,5 +1,5 @@
 require('./../../css/template/show.css');
-require('./../base.js');
+require('./../user/layout.js');
 import Template from './Template.js'
 import Effect from './../Effect.js'
 

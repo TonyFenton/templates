@@ -1,6 +1,6 @@
 require('./../../css/template/new_edit.css');
 require('jquery-ui/ui/widgets/sortable');
-require('./../base.js');
+require('./../user/layout.js');
 import TemplateBuilder from './TemplateBuilder.js'
 import TemplateModal from './TemplateModal.js'
 
