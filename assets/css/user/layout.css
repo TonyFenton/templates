@@ -14,18 +14,22 @@ body {
     padding-bottom: 10px;
 }
 
-#side-menu-folder-list .list-group-item {
-    background-color: #e9ecef;
+#side-menu-list .list-group-item {
     padding: 10px;
 }
 
-#side-menu-folder-list .list-group-item:hover {
+#side-menu-list .list-group-item:hover {
     background-color: #f7f7f7;
     cursor: pointer;
 }
 
-#side-menu-folder-list .side-menu-template-list .list-group-item {
+#side-menu-list .side-menu-template-list .list-group-item {
     padding-left: 25px;
+}
+
+.side-menu-folder,
+.side-menu-template-list > .list-group-item {
+    background-color: #e9ecef;
 }
 
 #content-block {
