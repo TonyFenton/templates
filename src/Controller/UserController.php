@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Template;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\FolderRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -19,12 +18,10 @@ class UserController extends Controller
         ]);
     }
 
-    public function sideMenu(EntityManagerInterface $em)
+    public function sideMenu(FolderRepository $folderRepository)
     {
-        $templates = $em->getRepository(Template::class)->findAll();
-
         return $this->render('user/_side_menu.html.twig', [
-            'templates' => $templates,
+            'folders' => $folderRepository->findSideMenu(),
         ]);
     }
 }

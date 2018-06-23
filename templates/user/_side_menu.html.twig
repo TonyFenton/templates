@@ -1,10 +1,13 @@
-<div class="list-group">
-    <a class="list-group-item list-group-item-success" href="{{ path('template_new') }}">
-        New Template
-    </a>
-    {% for template in templates %}
-        <a class="list-group-item" href="{{ path('template_show', {id: template.id}) }}">
-            {{ template.name }}
-        </a>
+{% set openFolder = app.request.cookies.get('open_folder') %}
+<div id="side-menu-folder-list" class="list-group">
+    {% for folder in folders %}
+        <div data-id="{{ folder.id }}" class="side-menu-folder list-group-item">
+            {{ folder.name }}
+        </div>
+        <div style="{{ openFolder == folder.id ? '' : 'display:none;' }}" class="side-menu-template-list list-group">
+            {% for template in folder.templates %}
+                <a class="list-group-item" href="{{ path('template_show', {id: template.id}) }}">{{ template.name }}</a>
+            {% endfor %}
+        </div>
     {% endfor %}
 </div>

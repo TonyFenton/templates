@@ -11,8 +11,21 @@ body {
 
 #side-menu-block {
     padding-top: 20px;
-    background-color: #e9ecef;
     padding-bottom: 10px;
+}
+
+#side-menu-folder-list .list-group-item {
+    background-color: #e9ecef;
+    padding: 10px;
+}
+
+#side-menu-folder-list .list-group-item:hover {
+    background-color: #f7f7f7;
+    cursor: pointer;
+}
+
+#side-menu-folder-list .side-menu-template-list .list-group-item {
+    padding-left: 25px;
 }
 
 #content-block {

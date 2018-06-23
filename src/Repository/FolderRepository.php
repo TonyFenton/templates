@@ -19,6 +19,16 @@ class FolderRepository extends ServiceEntityRepository
         parent::__construct($registry, Folder::class);
     }
 
+    public function findSideMenu()
+    {
+        return $this->createQueryBuilder('f')
+            ->innerJoin('f.templates', 't')
+            ->orderBy('f.name')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Folder[] Returns an array of Folder objects
 //     */
