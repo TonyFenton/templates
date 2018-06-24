@@ -1,4 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import './../fontello/css/doc.css';
 
 body {
     background-color: #f9f9f9;
@@ -11,4 +12,12 @@ body {
 
 .form-group {
     margin-bottom: 0.5rem;
+}
+
+.breadcrumb {
+    border: 1px solid rgba(0,0,0,.125)
+}
+
+.breadcrumb-btn {
+    margin-top: 6px;
 }

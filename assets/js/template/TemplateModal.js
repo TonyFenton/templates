@@ -30,7 +30,7 @@ export default class TemplateModal {
      */
     displayNewView() {
         this.clear();
-        this.label.text('New');
+        this.label.text('Add a new variable').addClass('icon-plus-squared').removeClass('icon-cog-alt');
         this.createBtn.show();
         this.saveBtn.hide();
         this.removeBtn.hide();
@@ -41,7 +41,7 @@ export default class TemplateModal {
      */
     displayEditView() {
         this.clear();
-        this.label.text('Edit');
+        this.label.text('Edit the variable').addClass('icon-cog-alt').removeClass('icon-plus-squared');
         this.createBtn.hide();
         this.saveBtn.show();
         this.removeBtn.show();

@@ -13,14 +13,14 @@
     <div class="row">
         <div class="col-sm-10">
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ path('folder_content', {'id': template.folder.id}) }}">{{ template.folder.name }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ template.name }}</li>
-                </ol>
+                <div class="breadcrumb">
+                    <div class="breadcrumb-item"><a href="{{ path('folder_content', {'id': template.folder.id}) }}">{{ template.folder.name }}</a></div>
+                    <div class="breadcrumb-item active" aria-current="page">{{ template.name }}</div>
+                </div>
             </nav>
         </div>
-        <div class="col-sm-2">
-            <a class="btn btn-primary" role="button" href="{{ path('template_edit', {id: template.id}) }}">Edit</a>
+        <div class="col-sm-2 text-center">
+            <a title="Edit the template" class="btn btn-primary icon-cog-alt breadcrumb-btn" role="button" href="{{ path('template_edit', {id: template.id}) }}"></a>
         </div>
     </div>
 
@@ -55,8 +55,8 @@
                         {% endfor %}
                     {% endspaceless %}</div>
                 <div id="action-panel">
-                    <button type="button" class="copy-btn btn btn-success">Copy</button>
-                    <button type="button" class="reset-btn btn btn-danger">Reset</button>
+                    <button type="button" class="copy-btn btn btn-success icon-docs">Copy</button>
+                    <button type="button" class="reset-btn btn btn-danger icon-doc-inv">Reset</button>
                 </div>
             </div>
         </div>

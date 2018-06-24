@@ -2,3 +2,8 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+.dataTable td {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}

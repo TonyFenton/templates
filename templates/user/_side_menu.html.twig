@@ -1,13 +1,18 @@
 {% set openFolder = app.request.cookies.get('open_folder') %}
 <div id="side-menu-list" class="list-group">
-    <a class="list-group-item list-group-item-success" href="{{ path('template_new') }}">Create a new template</a>
+    <a class="list-group-item list-group-item-success icon-plus-squared" href="{{ path('template_new') }}">Add a new template</a>
     {% for folder in folders %}
-        <div data-id="{{ folder.id }}" class="side-menu-folder list-group-item">
+        {% if openFolder == folder.id %}
+            {% set style, icon = '', 'icon-folder-open' %}
+        {% else %}
+            {% set style, icon = 'display:none;', 'icon-folder' %}
+        {% endif %}
+        <div data-id="{{ folder.id }}" class="side-menu-folder list-group-item {{ icon }}">
             {{ folder.name }}
         </div>
-        <div style="{{ openFolder == folder.id ? '' : 'display:none;' }}" class="side-menu-template-list list-group">
+        <div style="{{ style }}" class="side-menu-template-list list-group">
             {% for template in folder.templates %}
-                <a class="list-group-item" href="{{ path('template_show', {id: template.id}) }}">{{ template.name }}</a>
+                <a class="list-group-item icon-doc-inv" href="{{ path('template_show', {id: template.id}) }}">{{ template.name }}</a>
             {% endfor %}
         </div>
     {% endfor %}

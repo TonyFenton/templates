@@ -39,21 +39,19 @@
                                 <input type="text" class="form-control text-variable-control" readonly="readonly"/>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-secondary edit-btn" data-toggle="modal"
-                                        data-target="#variable-modal">Edit
+                                <button title="Edit the variable" type="button" class="btn btn-secondary edit-btn icon-cog-alt" data-toggle="modal"
+                                        data-target="#variable-modal">
                                 </button>
-                                <span class="sortable-handle">
-                                    Sort
-                                </span>
+                                <span title="Change order of the variable" class="sortable-handle icon-resize-vertical"></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button id="add-variable" type="button" class="btn btn-info" data-toggle="modal" data-target="#variable-modal">Add a variable</button>
+                <button id="add-variable" type="button" class="btn btn-info icon-plus-squared" data-toggle="modal" data-target="#variable-modal">Add a new variable</button>
                 {{ form_errors(form.text) }}
                 {{ form_widget(form.text) }}
                 <div id="action-panel">
-                    <input type="submit" value="Save" class="copy-btn btn btn-success"/>
+                    <button type="submit" class="copy-btn btn btn-success icon-floppy">Save</button>
                 </div>
             {{ form_end(form) }}
         </div>
@@ -90,10 +88,10 @@
                     <input id="variable-id" type="hidden" class="form-control"/>
                 </div>
                 <div class="modal-footer">
-                    <button id="remove-variable" type="button" class="btn btn-danger" data-dismiss="modal">Remove</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="save-variable" type="button" class="btn btn-success" data-dismiss="modal">Save</button>
-                    <button id="create-variable" type="button" class="btn btn-success" data-dismiss="modal">Create</button>
+                    <button id="remove-variable" type="button" class="btn btn-danger icon-trash" data-dismiss="modal">Remove</button>
+                    <button type="button" class="btn btn-secondary icon-window-close" data-dismiss="modal">Close</button>
+                    <button id="save-variable" type="button" class="btn btn-success icon-floppy" data-dismiss="modal">Save</button>
+                    <button id="create-variable" type="button" class="btn btn-success icon-floppy" data-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>

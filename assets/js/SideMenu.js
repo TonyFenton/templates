@@ -45,11 +45,15 @@ export default class SideMenu {
     toggleTemplateList(folder) {
         const list = folder.next();
         if (list.is(':hidden')) {
-            this.sideMenuBlock.find('.side-menu-template-list:visible').slideUp();
+            this.sideMenuBlock.find('.side-menu-template-list:visible')
+                .slideUp()
+                .siblings('.side-menu-folder').addClass('icon-folder').removeClass('icon-folder-open');
             list.slideDown();
+            folder.addClass('icon-folder-open').removeClass('icon-folder');
             Cookies.set('open_folder', folder.data('id'));
         } else {
             list.slideUp();
+            folder.addClass('icon-folder').removeClass('icon-folder-open');
             Cookies.remove('open_folder');
         }
     }
