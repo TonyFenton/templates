@@ -34,20 +34,22 @@
                     <div id="variables-wrapper">
                         {# text variable prototype #}
                         <div class="form-group row" id="text-variable-prototype" data-variable="{}">
-                            <label class="col-form-label col-sm-2 form-control-label" for=""></label>
-                            <div class="col-sm-8">
+                            <label class="col-form-label col-2 form-control-label" for=""></label>
+                            <div class="col-8">
                                 <input type="text" class="form-control text-variable-control" readonly="readonly"/>
                             </div>
-                            <div class="col-sm-2">
-                                <button title="Edit the variable" type="button" class="btn btn-secondary edit-btn icon-cog-alt" data-toggle="modal"
+                            <div class="col-1 text-center">
+                                <button title="Edit the variable" type="button" class="btn btn-primary edit-btn icon-cog-alt" data-toggle="modal"
                                         data-target="#variable-modal">
                                 </button>
-                                <span title="Change order of the variable" class="sortable-handle icon-resize-vertical"></span>
+                            </div>
+                            <div class="col-1 text-center">
+                                <span role="button" title="Change order of the variable" class="btn btn-secondary sortable-handle icon-resize-vertical"></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button id="add-variable" type="button" class="btn btn-info icon-plus-squared" data-toggle="modal" data-target="#variable-modal">Add a new variable</button>
+                <button id="add-variable" type="button" class="btn btn-primary icon-plus-squared" data-toggle="modal" data-target="#variable-modal">Add a new variable</button>
                 {{ form_errors(form.text) }}
                 {{ form_widget(form.text) }}
                 <div id="action-panel">

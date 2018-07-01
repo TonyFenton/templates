@@ -33,7 +33,7 @@
     background-color: #f7f7f7;
 }
 
-.sortable-handle {
+#variables-wrapper .sortable-handle {
     cursor: -webkit-grab;
     cursor: grab;
 }
