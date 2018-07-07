@@ -32,6 +32,11 @@ class Folder
      */
     private $templates;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default" : true})
+     */
+    private $favorite = true;
+
     public function __construct()
     {
         $this->templates = new ArrayCollection();
@@ -86,6 +91,18 @@ class Folder
                 $template->setFolder(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFavorite(): ?bool
+    {
+        return $this->favorite;
+    }
+
+    public function setFavorite(bool $favorite): self
+    {
+        $this->favorite = $favorite;
 
         return $this;
     }

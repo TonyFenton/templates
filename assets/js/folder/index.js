@@ -1,4 +1,4 @@
-require('./../../css/user/layout.css');
+require('./../../css/folder/index.css');
 require('./../../css/datatable.css');
 require('./../user/layout.js');
 require('datatables.net-bs4/js/dataTables.bootstrap4');
@@ -10,7 +10,7 @@ $(function () {
     $('#folders').DataTable({
         columnDefs: [
             {
-                targets: 1,
+                targets: 2,
                 searchable: false,
                 sorting: false
             }

@@ -27,15 +27,17 @@
     <table id="folders" class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th width="75">Name</th>
-                <th width="15">Actions</th>
+                <th width="70">Name</th>
+                <th width="10">Favorite</th>
+                <th width="20">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for folder in folders %}
             <tr>
-                <td class="align-middle" width="75"><a title="Open the folder" href="{{ path('folder_content', {'id': folder.id}) }}">{{ folder.name }}</a></td>
-                <td width="15">
+                <td class="align-middle" width="70"><a title="Open the folder" href="{{ path('folder_content', {'id': folder.id}) }}">{{ folder.name }}</a></td>
+                <td class="favorite-cell align-middle text-center {{ folder.favorite ? 'icon-ok' : 'icon-minus' }}" width="10" data-sort="{{ folder.favorite ? 1 : 0 }}"></td>
+                <td width="20">
                     <div class="row">
                         <div class="col-3 text-center">
                             <a title="Open the folder" class="btn btn-success icon-folder" role="link" href="{{ path('folder_content', {'id': folder.id}) }}"></a>

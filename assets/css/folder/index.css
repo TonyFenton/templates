@@ -1,0 +1,5 @@
+@import './../user/layout.css';
+
+.favorite-cell {
+    color: #8c8c8c;
+}

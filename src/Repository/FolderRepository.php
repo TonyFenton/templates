@@ -24,6 +24,7 @@ class FolderRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('f')
             ->addSelect('t')
             ->leftJoin('f.templates', 't')
+            ->andWhere('f.favorite = true')
             ->orderBy('f.name')
             ->getQuery()
             ->getResult()

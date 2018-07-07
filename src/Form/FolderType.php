@@ -13,6 +13,7 @@ class FolderType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('favorite')
         ;
     }
 
