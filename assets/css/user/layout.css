@@ -46,6 +46,15 @@ footer {
 }
 
 .side-menu-folder:before,
-.side-menu-template-list a:before {
+.side-menu-template-list i:before {
     color: #8c8c8c;
+}
+
+.side-menu-template-list i:before {
+    vertical-align: 10%;
+    font-size: 90%;
+}
+
+.side-menu-template-list i:before {
+    margin-right: 7px;
 }

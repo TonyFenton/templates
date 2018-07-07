@@ -12,7 +12,7 @@
         </div>
         <div style="{{ style }}" class="side-menu-template-list list-group">
             {% for template in folder.templates %}
-                <a class="list-group-item icon-doc-inv" href="{{ path('template_show', {id: template.id}) }}">{{ template.name }}</a>
+                <a class="list-group-item" href="{{ path('template_show', {id: template.id}) }}"><i class="icon-doc-inv"></i>{{ template.name }}</a>
             {% endfor %}
         </div>
     {% endfor %}
