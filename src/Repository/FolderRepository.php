@@ -22,7 +22,8 @@ class FolderRepository extends ServiceEntityRepository
     public function findSideMenu()
     {
         return $this->createQueryBuilder('f')
-            ->innerJoin('f.templates', 't')
+            ->addSelect('t')
+            ->leftJoin('f.templates', 't')
             ->orderBy('f.name')
             ->getQuery()
             ->getResult()
