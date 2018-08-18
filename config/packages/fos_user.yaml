@@ -1,0 +1,9 @@
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: App\Entity\AppUser
+    from_email:
+        address: '%env(FOS_USER_FROM_EMAIL_ADDRESS)%'
+        sender_name: '%env(FOS_USER_FROM_EMAIL_SENDER_NAME)%'
+    resetting:
+        retry_ttl: '%env(FOS_USER_RESETTING_RETRY_TTL)%'

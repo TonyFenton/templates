@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <h1>{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}</h1>
+            <div>
+                {% include "@FOSUser/Profile/edit_content.html.twig" %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

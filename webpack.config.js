@@ -14,6 +14,7 @@ Encore
     .addEntry('base', './assets/js/base.js')
     .addStyleEntry('base_style', './assets/css/base.css')
     .addEntry('user_layout', ['./assets/css/user/layout.css', './assets/js/user/layout.js'])
+    .addEntry('default_layout', ['./assets/css/default/layout.css'])
     .addEntry('template_new_edit', './assets/js/template/new_edit.js')
     .addEntry('template_show', './assets/js/template/show.js')
     .addEntry('folder_index', './assets/js/folder/index.js')
