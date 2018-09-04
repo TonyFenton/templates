@@ -44,7 +44,7 @@
 }
 
 .variable-control {
-    margin: 10px 0px;
+    margin: 10px 0;
 }
 
 .sortable-placeholder {
@@ -54,7 +54,7 @@
 }
 
 .sortable-start {
-    background-color: #ced4da;
+    background-color: #e5e5e5;
     border-radius: 5px;
 }
 
@@ -69,6 +69,10 @@
     border-top-right-radius: 0.25rem;
 }
 
-#name-folder-wrapper {
-    padding-left: 15px;
+#save-variable {
+    margin-left: 0;
+}
+
+#close-variable.btn-form-2-of-2 {
+    margin-right: 0;
 }

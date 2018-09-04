@@ -1,0 +1,11 @@
+<nav aria-label="breadcrumb">
+    <div class="breadcrumb">
+        {% for item in items %}
+            {% if not loop.last %}
+                <div class="breadcrumb-item"><a href="{{ item.href }}">{{ item.name }}</a></div>
+            {% else %}
+                <div class="breadcrumb-item active" aria-current="page">{{ item.name }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</nav>

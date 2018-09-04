@@ -5,16 +5,8 @@
     white-space: pre-wrap;
 }
 
-.copy-btn {
-    margin-right: 33%;
-}
-
 #text {
     padding: 15px;
-    background-color: #f7f7f7;
+    background-color: inherit;
     border: 1px solid #ced4da;
-}
-
-#text-control {
-    padding-left: 15px;
 }

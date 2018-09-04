@@ -3,17 +3,12 @@
 {% block title %}Edit folder{% endblock %}
 
 {% block content %}
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ path('folder_index') }}">Folders</a></li>
-            <li class="breadcrumb-item"><a href="{{ path('folder_content', {'id': folder.id}) }}">{{ folder.name }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit</li>
-        </ol>
-    </nav>
+
+    {% include "_breadcrumb.html.twig" with {items: [
+        {href: path('folder_index'), name: "Folders" },
+        {href: path('folder_content', {'id': folder.id}), name: folder.name },
+        {name: "Edit"}
+    ]} %}
 
     {{ include('folder/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <br/>
-
-    <a class="btn btn-primary icon-reply" role="link" href="{{ path('folder_index') }}">Back to the folders list</a>
 {% endblock %}

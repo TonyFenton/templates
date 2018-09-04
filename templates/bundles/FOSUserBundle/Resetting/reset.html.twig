@@ -3,7 +3,9 @@
 {% block content %}
     <div class="row">
         <div class="col-xs-10 offset-xs-1 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-            <h1>{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</h1>
+            {% include "_breadcrumb.html.twig" with {items: [
+                {name: 'resetting.reset.submit'|trans({}, 'FOSUserBundle')}
+            ]} %}
             <div>
                 {% include "@FOSUser/Resetting/reset_content.html.twig" %}
             </div>

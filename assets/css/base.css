@@ -19,6 +19,10 @@ footer {
     line-height: 60px; /* Vertically center the text there */
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .form-control,
 .form-control:focus {
     color: #212529;
@@ -29,7 +33,12 @@ footer {
 }
 
 .breadcrumb {
-    border: 1px solid rgba(0,0,0,.125)
+    border: 1px solid rgba(0,0,0,.125);
+    background-color: inherit;
+}
+
+.breadcrumb-item.active {
+    color: #212529;
 }
 
 .breadcrumb-btn {
@@ -40,3 +49,51 @@ footer {
     padding-top: 20px;
     padding-bottom: 130px;
 }
+
+.not-frame-block {
+    margin-top: 7px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.not-frame-block-left {
+    margin-top: 7px;
+    padding-left: 16px;
+}
+
+.btn-form-1-of-1,
+.btn-form-1-of-2,
+.btn-form-2-of-2,
+.btn-form-1-of-3,
+.btn-form-2-of-3,
+.btn-form-3-of-3 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.btn-form-1-of-1 {
+    width: 100%;
+}
+
+.btn-form-1-of-2,
+.btn-form-2-of-2 {
+    width: 49.5%;
+}
+
+.btn-form-1-of-2,
+.btn-form-1-of-3 {
+    float: left;
+}
+
+.btn-form-2-of-2,
+.btn-form-3-of-3 {
+    float: right;
+}
+
+.btn-form-1-of-3,
+.btn-form-2-of-3,
+.btn-form-3-of-3 {
+    width: 33.3%;
+}
+
+

@@ -20,22 +20,21 @@
         <input type="password" id="password" name="_password" required="required" class="form-control"
                placeholder="{{ 'security.login.password'|trans }}"/>
     </div>
-    <div class="checkbox">
+    <div class="checkbox not-frame-block">
         <label>
             <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
             {{ 'security.login.remember_me'|trans }}
         </label>
     </div>
-    <input type="submit" id="_submit" class="btn btn-success" name="_submit"
+    <input type="submit" id="_submit" class="btn btn-success btn-form-1-of-1" name="_submit"
            value="{{ 'security.login.submit'|trans }}"/>
-    <ul class="links">
-        <li>
-            <a href="{{ path('fos_user_resetting_request') }}"
-               class="">{{ 'login.forgot_password'|trans({},'app') }}</a>
-        </li>
-        <li>
-            <a href="{{ path('fos_user_registration_register') }}"
-               class="">{{ 'fosuser.register'|trans }}</a>
-        </li>
-    </ul>
+    <br />
+    <div class="not-frame-block">
+        <a href="{{ path('fos_user_resetting_request') }}"
+           class="">{{ 'login.forgot_password'|trans({},'app') }}</a>
+        <div>
+        </div>
+        <a href="{{ path('fos_user_registration_register') }}"
+           class="">{{ 'fosuser.register'|trans }}</a>
+    </div>
 </form>

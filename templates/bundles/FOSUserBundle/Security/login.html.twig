@@ -3,10 +3,12 @@
 {% block content %}
     <div class="row">
         <div class="col-xs-10 offset-xs-1 sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-                <h1>{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</h1>
-                <div>
-                    {{ include('@FOSUser/Security/login_content.html.twig') }}
-                </div>
+            {% include "_breadcrumb.html.twig" with {items: [
+                {name: 'layout.login'|trans({}, 'FOSUserBundle')}
+            ]} %}
+            <div>
+                {{ include('@FOSUser/Security/login_content.html.twig') }}
+            </div>
         </div>
     </div>
 {% endblock content %}

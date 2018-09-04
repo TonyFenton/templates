@@ -4,16 +4,19 @@
     <div class="row">
         <div class="col-12">
             <div class="text-left inline-block">
-                <h1>{{ 'fosuser.profile_show'|trans }}</h1>
                 {% include "_flash_messages.html.twig" %}
+                {% include "_breadcrumb.html.twig" with {items: [
+                    {name: "Profile"}
+                ]} %}
+
                 <div>
                     {% include "@FOSUser/Profile/show_content.html.twig" %}
                 </div>
-                <div class="btn-group">
-                    <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}"
+                <div>
+                    <a class="btn btn-primary btn-form-1-of-2" href="{{ path('fos_user_profile_edit') }}"
                        role="button">{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}</a>
-                    <a class="btn btn-primary" href="{{ path('fos_user_change_password') }}"
-                       role="button">{{ 'fosuser.change_password'|trans }}</a>
+                    <a class="btn btn-primary btn-form-2-of-2" href="{{ path('fos_user_change_password') }}"
+                       role="button">{{ 'change_password.submit'|trans({}, 'FOSUserBundle') }}</a>
                 </div>
             </div>
         </div>

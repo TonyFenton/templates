@@ -2,12 +2,12 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
-            <div class="jumbotron">
-                <h1>{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</h1>
-                <div>
-                    {% include "@FOSUser/Registration/register_content.html.twig" %}
-                </div>
+        <div class="col-xs-10 offset-xs-1 col-sm-9 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+            {% include "_breadcrumb.html.twig" with {items: [
+                {name: 'layout.register'|trans({}, 'FOSUserBundle')}
+            ]} %}
+            <div>
+                {% include "@FOSUser/Registration/register_content.html.twig" %}
             </div>
         </div>
     </div>

@@ -3,16 +3,11 @@
 {% block title %}New folder{% endblock %}
 
 {% block content %}
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ path('folder_index') }}">Folders</a></li>
-            <li class="breadcrumb-item active" aria-current="page">New</li>
-        </ol>
-    </nav>
+
+    {% include "_breadcrumb.html.twig" with {items: [
+        {href: path('folder_index'), name: "Folders" },
+        {name: "New"}
+    ]} %}
 
     {{ include('folder/_form.html.twig') }}
-
-    <br/>
-
-    <a class="btn btn-primary icon-reply" role="link" href="{{ path('folder_index') }}">Back to the folders list</a>
 {% endblock %}

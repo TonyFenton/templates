@@ -8,25 +8,23 @@
 
 {% block content %}
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            {% if template is defined %} {# edit action #}
-                <li class="breadcrumb-item"><a href="{{ path('folder_content', {'id': template.folder.id}) }}">{{ template.folder.name }}</a>
-                </li>
-                <li class="breadcrumb-item"><a href="{{ path('template_show', {'id': template.id}) }}">{{ template.name }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edit</li>
-
-            {% else %} {# new action #}
-                <li class="breadcrumb-item"><a href="{{ path('template_index') }}">Templates</a></li>
-                <li class="breadcrumb-item active" aria-current="page">New</li>
-            {% endif %}
-        </ol>
-    </nav>
+    {% if template is defined %} {# edit action #}
+        {% include "_breadcrumb.html.twig" with {items: [
+            {href: path('folder_content', {'id': template.folder.id}), name: template.folder.name },
+            {href: path('template_show', {'id': template.id}), name: template.name },
+            {name: "Edit"}
+        ]} %}
+    {% else %} {# new action #}
+        {% include "_breadcrumb.html.twig" with {items: [
+            {href: path('template_index'), name: "Templates" },
+            {name: "New"}
+        ]} %}
+    {% endif %}
 
     <div class="row">
         <div id="template" class="col-sm">
             {{ form_start(form) }}
-            <div id="name-folder-wrapper">
+            <div id="name-folder-wrapper" class="not-frame-block-left">
                 {{ form_row(form.name) }}
                 {{ form_row(form.folder) }}
             </div>
@@ -34,16 +32,16 @@
                     <div id="variables-wrapper">
                         {# text variable prototype #}
                         <div class="form-group row" id="text-variable-prototype" data-variable="{}">
-                            <label class="col-form-label col-2 form-control-label" for=""></label>
-                            <div class="col-8">
+                            <label class="col-form-label col-sm-3 col-md-2 form-control-label" for=""></label>
+                            <div class="col-sm-7 col-md-8">
                                 <input type="text" class="form-control text-variable-control" readonly="readonly"/>
                             </div>
-                            <div class="col-1 text-center">
+                            <div class="col-sm-1 text-center">
                                 <button title="Edit the variable" type="button" class="btn btn-primary edit-btn icon-cog-alt" data-toggle="modal"
                                         data-target="#variable-modal">
                                 </button>
                             </div>
-                            <div class="col-1 text-center">
+                            <div class="col-sm-1 text-center">
                                 <span role="button" title="Change order of the variable" class="btn btn-secondary sortable-handle icon-resize-vertical"></span>
                             </div>
                         </div>
@@ -53,7 +51,7 @@
                 {{ form_errors(form.text) }}
                 {{ form_widget(form.text) }}
                 <div id="action-panel">
-                    <button type="submit" class="copy-btn btn btn-success icon-floppy">Save</button>
+                    <button type="submit" class="copy-btn btn btn-success icon-floppy btn-form-1-of-1">Save</button>
                 </div>
             {{ form_end(form) }}
         </div>
@@ -90,10 +88,10 @@
                     <input id="variable-id" type="hidden" class="form-control"/>
                 </div>
                 <div class="modal-footer">
-                    <button id="remove-variable" type="button" class="btn btn-danger icon-trash" data-dismiss="modal">Remove</button>
-                    <button type="button" class="btn btn-secondary icon-window-close" data-dismiss="modal">Close</button>
-                    <button id="save-variable" type="button" class="btn btn-success icon-floppy" data-dismiss="modal">Save</button>
-                    <button id="create-variable" type="button" class="btn btn-success icon-floppy" data-dismiss="modal">Save</button>
+                    <button id="create-variable" type="button" class="btn btn-success icon-floppy btn-form-1-of-2" data-dismiss="modal">Save</button>
+                    <button id="save-variable" type="button" class="btn btn-success icon-floppy btn-form-1-of-3" data-dismiss="modal">Save</button>
+                    <button id="close-variable" type="button" class="btn btn-secondary icon-window-close" data-dismiss="modal">Close</button>
+                    <button id="remove-variable" type="button" class="btn btn-danger icon-trash btn-form-3-of-3" data-dismiss="modal">Remove</button>
                 </div>
             </div>
         </div>

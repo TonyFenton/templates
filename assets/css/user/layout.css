@@ -4,28 +4,29 @@
     padding-top: 20px;
     padding-bottom: 10px;
 }
+#side-menu-list {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: .25rem;
+}
 
 #side-menu-list .list-group-item {
     padding: 10px;
+    background-color: inherit;
+    border: none;
 }
 
 #side-menu-list .list-group-item:hover {
-    background-color: #f7f7f7;
     cursor: pointer;
+    background-color: rgba(0,0,0,.075);
 }
 
 #side-menu-list .side-menu-template-list .list-group-item {
     padding-left: 25px;
 }
 
-.side-menu-folder,
-.side-menu-template-list > .list-group-item {
-    background-color: #e9ecef;
-}
-
 .side-menu-folder:before,
 .side-menu-template-list i:before {
-    color: #8c8c8c;
+    color: #aaaaaa;
 }
 
 .side-menu-template-list i:before {
