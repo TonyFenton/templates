@@ -27,6 +27,7 @@ class TemplateType extends AbstractType
             ->add('text', null, [
                 'label' => false,
                 'attr' => ['placeholder' => 'Enter text with variables in curly brackets, e.g. Alice has a {sth}. The {sth} is red.'],
+                'trim' => false,
             ])
             ->add('variables', HiddenType::class)
         ;
