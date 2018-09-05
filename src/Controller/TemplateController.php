@@ -19,7 +19,9 @@ class TemplateController extends AbstractController
      */
     public function index(TemplateRepository $templateRepository): Response
     {
-        return $this->render('template/index.html.twig', ['templates' => $templateRepository->findAll()]);
+        return $this->render('template/index.html.twig',
+            ['templates' => $templateRepository->findByUser($this->getUser())]
+        );
     }
 
     /**
@@ -30,6 +32,8 @@ class TemplateController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $template = $em->getRepository(Template::class)->find($id);
+
+        $this->denyAccessUnlessGranted('show', $template->getFolder());
 
         if (null === $template) {
             throw $this->createNotFoundException('No template found');
@@ -49,7 +53,7 @@ class TemplateController extends AbstractController
     {
         $template = new Template();
         $template->setFolder($folder);
-        $form = $this->createForm(TemplateType::class, $template);
+        $form = $this->createForm(TemplateType::class, $template, ['user' => $this->getUser()]);
 
         $form->handleRequest($request);
 
@@ -73,7 +77,7 @@ class TemplateController extends AbstractController
      * Edit a template
      * @Route("/template/{id}/edit", name="template_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
-    public function edit(Request $request, int $id): Response
+    public function edit(Request $request, Template $id): Response
     {
         $em = $this->getDoctrine()->getManager();
         $template = $em->getRepository(Template::class)->find($id);
@@ -82,7 +86,9 @@ class TemplateController extends AbstractController
             throw $this->createNotFoundException('No template found');
         }
 
-        $form = $this->createForm(TemplateType::class, $template);
+        $this->denyAccessUnlessGranted('edit', $template->getFolder());
+
+        $form = $this->createForm(TemplateType::class, $template, ['user' => $this->getUser()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

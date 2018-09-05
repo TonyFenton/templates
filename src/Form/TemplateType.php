@@ -15,12 +15,16 @@ class TemplateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $user = $options['user'];
+
         $builder
             ->add('name')
             ->add('folder', EntityType::class, [
                 'class' => Folder::class,
-                'query_builder' => function (EntityRepository $er) {
+                'query_builder' => function (EntityRepository $er) use ($user)  {
                     return $er->createQueryBuilder('f')
+                        ->andWhere('f.user = :user')
+                        ->setParameter('user', $user)
                         ->orderBy('f.name', 'ASC');
                 },
             ])
@@ -35,8 +39,10 @@ class TemplateType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Template::class,
-        ]);
+        $resolver
+            ->setDefaults([
+                'data_class' => Template::class,
+            ])
+            ->setRequired('user');
     }
 }

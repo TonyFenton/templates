@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\AppUser;
 use App\Entity\Template;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -17,6 +18,17 @@ class TemplateRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Template::class);
+    }
+
+    public function findByUser(AppUser $user)
+    {
+        return $this->createQueryBuilder('t')
+            ->innerJoin('t.folder', 'f')
+            ->andWhere('f.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('t.id', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

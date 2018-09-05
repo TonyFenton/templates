@@ -21,7 +21,7 @@ class UserController extends Controller
     public function sideMenu(FolderRepository $folderRepository)
     {
         return $this->render('user/_side_menu.html.twig', [
-            'folders' => $folderRepository->findSideMenu(),
+            'folders' => $folderRepository->findSideMenu($this->getUser()),
         ]);
     }
 }

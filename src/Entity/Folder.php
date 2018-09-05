@@ -37,6 +37,12 @@ class Folder
      */
     private $favorite = true;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\AppUser", inversedBy="folders")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->templates = new ArrayCollection();
@@ -103,6 +109,18 @@ class Folder
     public function setFavorite(bool $favorite): self
     {
         $this->favorite = $favorite;
+
+        return $this;
+    }
+
+    public function getUser(): ?AppUser
+    {
+        return $this->user;
+    }
+
+    public function setUser(?AppUser $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

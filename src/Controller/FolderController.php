@@ -20,7 +20,7 @@ class FolderController extends Controller
      */
     public function index(FolderRepository $folderRepository): Response
     {
-        return $this->render('folder/index.html.twig', ['folders' => $folderRepository->findBy([], ['name' => 'asc'])]);
+        return $this->render('folder/index.html.twig', ['folders' => $folderRepository->findBy(['user' => $this->getUser()])]);
     }
 
     /**
@@ -29,6 +29,7 @@ class FolderController extends Controller
     public function new(Request $request): Response
     {
         $folder = new Folder();
+        $folder->setUser($this->getUser());
         $form = $this->createForm(FolderType::class, $folder);
         $form->handleRequest($request);
 
@@ -53,6 +54,8 @@ class FolderController extends Controller
      */
     public function content(Folder $folder)
     {
+        $this->denyAccessUnlessGranted('show', $folder);
+
         return $this->render('folder/content.html.twig', ['folder' => $folder]);
     }
 
@@ -61,6 +64,8 @@ class FolderController extends Controller
      */
     public function edit(Request $request, Folder $folder): Response
     {
+        $this->denyAccessUnlessGranted('edit', $folder);
+
         $form = $this->createForm(FolderType::class, $folder);
         $form->handleRequest($request);
 
