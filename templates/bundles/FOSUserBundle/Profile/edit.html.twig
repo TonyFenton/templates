@@ -5,7 +5,7 @@
         <div class="col-12">
             {% include "_breadcrumb.html.twig" with {items: [
                 {href: path('fos_user_profile_show'), name: "Profile" },
-                {name: 'profile.edit.submit'|trans({}, 'FOSUserBundle')}
+                {name: 'Edit'}
             ]} %}
             <div>
                 {% include "@FOSUser/Profile/edit_content.html.twig" %}
