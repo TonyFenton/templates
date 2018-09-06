@@ -5,42 +5,43 @@
 {% endblock %}
 
 {% block body %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-        <button id="side-menu-btn" type="button" class="d-lg-none navbar-toggler">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="{{ path('homepage') }}">Logo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav id="main-nav" class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button id="side-menu-btn" type="button" class="d-lg-none navbar-toggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('homepage') }}">Logo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                {% if is_granted('ROLE_USER') %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('folder_index') }}">Folders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('template_index') }}">Templates</a>
-                    </li>
-                {% endif %}
-            </ul>
-            <div class="btn-group" role="group" aria-label="user">
-                {% if is_granted("ROLE_USER") %}
-                <a class="btn btn-light"
-                   href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
-                <a class="btn btn-secondary"
-                   href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
-                {% else %}
-                <a class="btn btn-success"
-                   href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                <a class="btn btn-secondary"
-                   href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
-                {% endif %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav ml-auto">
+                    {% if is_granted('ROLE_USER') %}
+                        <div class="nav-item col-4 btn-group" role="group" aria-label="templates">
+                            <a class="btn btn-info" href="{{ path('template_index') }}">Templates</a>
+                            <a class="btn btn-primary icon-plus-squared" href="{{ path('template_new') }}"></a>
+                        </div>
+                        <div class="nav-item col-4 btn-group" role="group" aria-label="folders">
+                            <a class="btn btn-info" href="{{ path('folder_index') }}">Folders</a>
+                            <a class="btn btn-primary icon-plus-squared" href="{{ path('folder_new') }}"></a>
+                        </div>
+                        <div class="nav-item col-4 btn-group" role="group" aria-label="user">
+                            <a class="btn btn-info" href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
+                            <a class="btn btn-primary" href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                        </div>
+                    {% else %}
+                        <div class="nav-item col-4 btn-group btn-user-group" role="group" aria-label="user">
+                            <a class="btn btn-info"
+                               href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            <a class="btn btn-primary"
+                               href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
-
     </nav>
     <div id="main-block" class="container">
         <div class="row">
@@ -57,6 +58,11 @@
             </div>
         </div>
     </div>
+
+    <footer id="main-footer">
+        <div class="container">
+        </div>
+    </footer>
 {% endblock %}
 
 {% block javascripts %}

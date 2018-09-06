@@ -11,7 +11,31 @@ body {
     margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
-footer {
+@media (max-width: 991px) {
+    #main-nav .nav-item {
+        margin: 12px auto 2px auto;
+        max-width: 100%;
+    }
+
+    #main-nav .nav-item a {
+        width: 50%;
+    }
+}
+
+#main-nav .nav-item a:first-child {
+    min-width: 100px;
+}
+
+#main-nav .nav-item.btn-user-group a:last-child {
+    min-width: 100px;
+}
+
+#main-nav,
+#main-footer {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#main-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
