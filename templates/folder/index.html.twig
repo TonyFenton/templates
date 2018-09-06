@@ -37,17 +37,14 @@
                 <td class="favorite-cell align-middle text-center {{ folder.favorite ? 'icon-ok' : 'icon-minus' }}" data-sort="{{ folder.favorite ? 1 : 0 }}"></td>
                 <td>
                     <div class="row">
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             <a title="Open the folder" class="btn btn-success icon-folder" role="link" href="{{ path('folder_content', {'id': folder.id}) }}"></a>
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             <a title="Add a new template in the folder" class="btn btn-success icon-plus-squared" role="link" href="{{ path('template_new_folder', {'id': folder.id}) }}"></a>
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             <a title="Edit the folder" class="btn btn-primary icon-cog-alt" role="link" href="{{ path('folder_edit', {'id': folder.id}) }}"></a>
-                        </div>
-                        <div class="col-3 text-center">
-                            {{ include('folder/_delete_form.html.twig') }}
                         </div>
                     </div>
                 </td>

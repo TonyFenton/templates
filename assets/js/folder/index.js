@@ -14,7 +14,7 @@ $(function () {
                 targets: 2,
                 searchable: false,
                 sorting: false,
-                width: "40%"
+                width: "30%"
             }
         ],
         pageLength: parseInt($('#datatables-length').val())
