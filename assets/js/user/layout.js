@@ -15,4 +15,17 @@ $(function () {
         sideMenu.toggleTemplateList($(this));
     });
 
+    // Handling the search of templates in the side menu
+    sideMenu.searchInput.on('focus', function () {
+        sideMenu.folders.off('click');
+        sideMenu.folders.css('cursor', 'default');
+        sideMenu.setFolderOpenIcon(sideMenu.folders);
+        sideMenu.templateLists.show();
+        sideMenu.search($(this).val());
+        sideMenu.removeOpenFolderCookie();
+    });
+    sideMenu.searchInput.on('input', function () {
+        sideMenu.search($(this).val());
+    });
+
 });

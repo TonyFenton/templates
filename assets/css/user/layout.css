@@ -37,3 +37,15 @@
 .side-menu-template-list i:before {
     margin-right: 7px;
 }
+
+#side-menu-search-input {
+    border-width: 0 0 1px 0;
+}
+
+#side-menu-no-matching-templates {
+    display: none;
+    text-align: center;
+    font-style: italic;
+    color: #888888;
+    margin: 8px 0;
+}

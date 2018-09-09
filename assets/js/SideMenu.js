@@ -9,6 +9,9 @@ export default class SideMenu {
         this.sideMenuBlock = $('#side-menu-block');
         this.btn = $('#side-menu-btn');
         this.folders = $('.side-menu-folder');
+        this.searchInput = $('#side-menu-search-input');
+        this.templateLists = $('.side-menu-template-list');
+        this.noMatchingTemplates = $('#side-menu-no-matching-templates');
     };
 
     /**
@@ -45,16 +48,57 @@ export default class SideMenu {
     toggleTemplateList(folder) {
         const list = folder.next();
         if (list.is(':hidden')) {
-            this.sideMenuBlock.find('.side-menu-template-list:visible')
+            let folders = this.sideMenuBlock.find('.side-menu-template-list:visible')
                 .slideUp()
-                .siblings('.side-menu-folder').addClass('icon-folder').removeClass('icon-folder-open');
+                .siblings('.side-menu-folder');
+            this.removeFolderOpenIcon(folders);
+            this.setFolderOpenIcon(folder);
             list.slideDown();
-            folder.addClass('icon-folder-open').removeClass('icon-folder');
-            Cookies.set('open_folder', folder.data('id'));
+            this.setOpenFolderCookie(folder.data('id'));
         } else {
             list.slideUp();
-            folder.addClass('icon-folder').removeClass('icon-folder-open');
-            Cookies.remove('open_folder');
+            this.removeFolderOpenIcon(folder);
+            this.removeOpenFolderCookie();
         }
+    }
+
+    /**
+     * Search of templates
+     *
+     * @param value
+     */
+    search(value) {
+        let found = false;
+        this.templateLists.each(function () {
+            let foundInFolder = false;
+            $(this).find('.side-menu-template').each(function () {
+                if (-1 !== $(this).text().toLowerCase().indexOf(value)) {
+                    $(this).show();
+                    foundInFolder = true;
+                    found = true;
+                } else {
+                    $(this).hide();
+                }
+            });
+            let folder = $(this).prev('.side-menu-folder');
+            true === foundInFolder ? folder.show() : folder.hide();
+        });
+        true === found ? this.noMatchingTemplates.hide() : this.noMatchingTemplates.show();
+    }
+
+    setOpenFolderCookie(id) {
+        Cookies.set('open_folder', id);
+    }
+
+    removeOpenFolderCookie() {
+        Cookies.remove('open_folder');
+    }
+
+    setFolderOpenIcon(folder) {
+        folder.addClass('icon-folder-open').removeClass('icon-folder');
+    }
+
+    removeFolderOpenIcon(folder) {
+        folder.addClass('icon-folder').removeClass('icon-folder-open');
     }
 }
