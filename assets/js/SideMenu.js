@@ -68,11 +68,12 @@ export default class SideMenu {
      * @param value
      */
     search(value) {
+        const preparedValue = value.toLowerCase();
         let found = false;
         this.templateLists.each(function () {
             let foundInFolder = false;
             $(this).find('.side-menu-template').each(function () {
-                if (-1 !== $(this).text().toLowerCase().indexOf(value)) {
+                if (-1 !== $(this).text().toLowerCase().indexOf(preparedValue)) {
                     $(this).show();
                     foundInFolder = true;
                     found = true;
