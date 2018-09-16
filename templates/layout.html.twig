@@ -28,7 +28,7 @@
                             <a class="btn btn-primary icon-plus-squared" href="{{ path('folder_new') }}"></a>
                         </div>
                         <div class="nav-item col-4 btn-group" role="group" aria-label="user">
-                            <a class="btn btn-info" href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
+                            <a class="btn btn-info" href="{{ path('fos_user_profile_show') }}">{{ app.user.username|cut(10) }}</a>
                             <a class="btn btn-primary" href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
                         </div>
                     {% else %}

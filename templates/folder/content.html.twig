@@ -34,7 +34,7 @@
         <tbody>
         {% for template in folder.templates %}
             <tr>
-                <td class="align-middle"><a title="Open the template" href="{{ path('template_show', {'id': template.id}) }}">{{ template.name }}</a></td>
+                <td class="align-middle"><a title="Open the template" href="{{ path('template_show', {'id': template.id}) }}">{{ template.name|cut(100) }}</a></td>
                 <td>
                     <div class="row">
                         <div class="col-6 text-center">
