@@ -9,12 +9,16 @@
             {% else %}
                 {% set style, icon = 'display:none;', 'icon-folder' %}
             {% endif %}
-            <div title="{{ folder.name }}" data-id="{{ folder.id }}" class="side-menu-folder list-group-item {{ icon }}">
+            <div title="{{ folder.name }}" data-id="{{ folder.id }}" class="side-menu-folder list-group-item">
+                <i class="{{ icon }}" style="color:{{ folder.color }};"></i>
                 {{ folder.name|cut(20) }}
             </div>
-            <div style="{{ style }}" class="side-menu-template-list list-group">
+            <div style="{{ style }};" class="side-menu-template-list list-group">
                 {% for template in folder.templates %}
-                    <a title="{{ template.name }}" class="list-group-item side-menu-template" href="{{ path('template_show', {id: template.id}) }}"><i class="icon-doc-inv"></i>{{ template.name|cut(20) }}</a>
+                    <a title="{{ template.name }}" class="list-group-item side-menu-template" href="{{ path('template_show', {id: template.id}) }}">
+                        <i class="icon-doc-inv" style="color:{{ folder.color }};"></i>
+                        {{ template.name|cut(20) }}
+                    </a>
                 {% endfor %}
             </div>
         {% endfor %}

@@ -120,4 +120,8 @@ a:hover {
     width: 33.3%;
 }
 
+input[type="color"] {
+    height: 100%;
+}
+
 

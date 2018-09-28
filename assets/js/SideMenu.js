@@ -96,10 +96,10 @@ export default class SideMenu {
     }
 
     setFolderOpenIcon(folder) {
-        folder.addClass('icon-folder-open').removeClass('icon-folder');
+        folder.find('i').addClass('icon-folder-open').removeClass('icon-folder');
     }
 
     removeFolderOpenIcon(folder) {
-        folder.addClass('icon-folder').removeClass('icon-folder-open');
+        folder.find('i').addClass('icon-folder').removeClass('icon-folder-open');
     }
 }

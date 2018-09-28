@@ -43,6 +43,11 @@ class Folder
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=7)
+     */
+    private $color = '#aaaaaa';
+
     public function __construct()
     {
         $this->templates = new ArrayCollection();
@@ -121,6 +126,18 @@ class Folder
     public function setUser(?AppUser $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

@@ -24,18 +24,9 @@
     padding-left: 25px;
 }
 
-.side-menu-folder:before,
-.side-menu-template-list i:before {
-    color: #aaaaaa;
-}
-
 .side-menu-template-list i:before {
     vertical-align: 10%;
     font-size: 90%;
-}
-
-.side-menu-template-list i:before {
-    margin-right: 7px;
 }
 
 #side-menu-search-input {
