@@ -5,6 +5,9 @@
                 <div class="breadcrumb-item"><a href="{{ item.href }}">{{ item.name }}</a></div>
             {% else %}
                 <div class="breadcrumb-item active" aria-current="page">{{ item.name }}</div>
+                {% if item.tooltip is defined and item.tooltip is not null %}
+                    {{ include('_tooltip.html.twig', {content: item.tooltip}) }}
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>

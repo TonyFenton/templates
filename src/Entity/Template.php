@@ -42,6 +42,12 @@ class Template
      */
     private $folder;
 
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(max=1000)
+     */
+    private $description;
+
     public function getId()
     {
         return $this->id;
@@ -129,6 +135,18 @@ class Template
     public function setFolder(?Folder $folder): self
     {
         $this->folder = $folder;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

@@ -95,6 +95,12 @@
       "css": "minus",
       "code": 19326,
       "src": "fontawesome"
+    },
+    {
+      "uid": "3d4ea8a78dc34efe891f3a0f3d961274",
+      "css": "info",
+      "code": 61737,
+      "src": "fontawesome"
     }
   ]
 }

@@ -124,4 +124,12 @@ input[type="color"] {
     height: 100%;
 }
 
-
+.tooltip-item {
+    padding: 0;
+    margin-left: 5px;
+    border-radius: 50%;
+    width: 21px;
+    height: 100%;
+    margin-top: 2px;
+    font-size: 75%;
+}
