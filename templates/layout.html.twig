@@ -54,6 +54,9 @@
                 {% set contentClass = 'col-12' %}
             {% endif %}
             <div id="content-block" class="{{ contentClass }}">
+
+                {% include "_flash_messages.html.twig" %}
+
                 {% block content %}{% endblock %}
             </div>
         </div>
