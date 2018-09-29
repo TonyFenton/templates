@@ -27,7 +27,7 @@ class Folder
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="folder", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="folder", orphanRemoval=true, cascade={"persist"})
      * @ORM\OrderBy({"name"="ASC"})
      */
     private $templates;
