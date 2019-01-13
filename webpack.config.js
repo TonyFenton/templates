@@ -12,14 +12,11 @@ Encore
 
     // uncomment to define the assets of the project
     .addEntry('base', './assets/js/base.js')
-    .addStyleEntry('base_style', './assets/css/base.css')
-    .addEntry('user_layout', ['./assets/css/user/layout.css', './assets/js/user/layout.js'])
-    .addEntry('default_layout', ['./assets/css/default/layout.css'])
-    .addEntry('template_new_edit', './assets/js/template/new_edit.js')
-    .addEntry('template_show', './assets/js/template/show.js')
-    .addEntry('folder_index', './assets/js/folder/index.js')
-    .addEntry('folder_content', './assets/js/folder/content.js')
-    .addEntry('template_index', './assets/js/template/index.js')
+    .addEntry('template_new_edit', './assets/js/template/new_edit/new_edit.js')
+    .addEntry('folder_index', './assets/js/folder/index/index.js')
+    .addEntry('folder_content', './assets/js/folder/content/content.js')
+    .addEntry('template_index', './assets/js/template/index/index.js')
+    .addEntry('user_homepage', './assets/js/user/homepage/homepage.js')
 
     // .addStyleEntry('css/app', './assets/css/app.scss')
 

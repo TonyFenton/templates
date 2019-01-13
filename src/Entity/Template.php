@@ -84,7 +84,7 @@ class Template
 
     public function getDecodedVariables(): array
     {
-        return json_decode($this->variables);
+        return json_decode($this->variables, true);
     }
 
     public function setVariables($variables): self
@@ -109,7 +109,7 @@ class Template
             $textTemp = [];
             foreach ($text as $item) {
                 if (false === $item['variableId']) {
-                    $snippets = explode('{'.$variable->name.'}', $item['content']);
+                    $snippets = explode('{'.$variable['name'].'}', $item['content']);
                     foreach ($snippets as $snippet) {
                         if ('' !== $snippet) {
                             $textTemp[] = ['content' => $snippet, 'variableId' => false];

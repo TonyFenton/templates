@@ -1,0 +1,88 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}tree{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/user_homepage.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    {% if folders is not empty %}
+        {% set openFolder = app.request.cookies.get('open_folder') %}
+        <div id="side-menu-list" class="list-group">
+            <input type="text" id="side-menu-search-input" class="form-control" placeholder="Search">
+            <div id="side-menu-no-matching-templates">No matching templates</div>
+            {% for folder in folders %}
+                {% if openFolder == folder.id %}
+                    {% set style, icon = '', 'icon-folder-open' %}
+                {% else %}
+                    {% set style, icon = 'display:none;', 'icon-folder' %}
+                {% endif %}
+                <div title="{{ folder.name }}" data-id="{{ folder.id }}" class="side-menu-folder list-group-item">
+                    <i class="{{ icon }}" style="color:{{ folder.color }};"></i>
+                    {{ folder.name|cut(50) }}
+                </div>
+                <div style="{{ style }};" class="side-menu-template-list list-group">
+                    {% for template in folder.templates %}
+                        <span class="list-group-item side-menu-template" data-toggle="modal" data-template-id="{{ template.id }}" data-target="#template-modal">
+                             <i class="icon-doc-inv" style="color:{{ folder.color }};"></i>
+                            {{ template.name|cut(50) }}
+                        </span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Modal -->
+    <div class="modal" id="template-modal" tabindex="-1" role="dialog" aria-labelledby="template-modal-label"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="breadcrumb-row row">
+                        <div class="col-10">
+                            <nav aria-label="breadcrumb">
+                                <div class="breadcrumb"></div>
+                            </nav>
+                        </div>
+                        <div class="col-2 text-left">
+                            <a title="Edit the template" class="btn btn-primary icon-cog-alt breadcrumb-btn" role="link" data-href-prototype="{{ path('template_edit', {id: 0}) }}" href="#"></a>
+                        </div>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div id="template">
+                        <div id="text-control">
+                            <div class="form-group row variable-control-row prototype">
+                                <label class="col-form-label col-sm-2 form-control-label" for=""></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control text-variable-control variable-control" placeholder="" value=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="text" class="jumbotron"></div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div id="action-panel">
+                        <button type="button" class="copy-btn btn btn-success icon-docs btn-form-1-of-2">Copy</button>
+                        <button type="button" class="reset-btn btn btn-danger icon-doc-inv btn-form-2-of-2">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div class="spinner modal-spinner"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/user_homepage.js') }}"></script>
+{% endblock %}

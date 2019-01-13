@@ -39,8 +39,10 @@ class TemplateController extends AbstractController
             throw $this->createNotFoundException('No template found');
         }
 
-        return $this->render('template/show.html.twig', [
-            'template' => $template,
+        return $this->json([
+            'path' => [$template->getFolder()->getName(), $template->getName()],
+            'variables' => $template->getDecodedVariables(),
+            'text' => $template->getTextToView(),
         ]);
     }
 
@@ -65,7 +67,7 @@ class TemplateController extends AbstractController
 
             $this->addFlash('success', 'The template has been created.');
 
-            return $this->redirectToRoute('template_show', ['id' => $template->getId()]);
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('template/new_edit.html.twig', [
@@ -96,7 +98,7 @@ class TemplateController extends AbstractController
 
             $this->addFlash('success', 'Your changes have been saved.');
 
-            return $this->redirectToRoute('template_show', ['id' => $template->getId()]);
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('template/new_edit.html.twig', [

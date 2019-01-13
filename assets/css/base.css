@@ -133,3 +133,11 @@ input[type="color"] {
     margin-top: 2px;
     font-size: 75%;
 }
+
+.prototype {
+    display: none;
+}
+
+.modal {
+    padding-right: 0 !important;
+}

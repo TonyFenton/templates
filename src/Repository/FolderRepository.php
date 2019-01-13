@@ -20,12 +20,11 @@ class FolderRepository extends ServiceEntityRepository
         parent::__construct($registry, Folder::class);
     }
 
-    public function findSideMenu(AppUser $user)
+    public function findTree(AppUser $user)
     {
         return $this->createQueryBuilder('f')
             ->addSelect('t')
             ->leftJoin('f.templates', 't')
-            ->andWhere('f.favorite = true')
             ->andWhere('f.user = :user')
             ->setParameter('user', $user)
             ->orderBy('f.name')

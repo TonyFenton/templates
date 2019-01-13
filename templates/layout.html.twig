@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('build/user_layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/base.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -45,15 +45,7 @@
     </nav>
     <div id="main-block" class="container">
         <div class="row">
-            {% if is_granted('ROLE_USER') %}
-                <div id="side-menu-block" class="d-none d-lg-block col-lg-3">
-                    {{ render(controller('App\\Controller\\UserController::sideMenu')) }}
-                </div>
-                {% set contentClass = 'col-md-12 col-lg-9' %}
-            {% else %}
-                {% set contentClass = 'col-12' %}
-            {% endif %}
-            <div id="content-block" class="{{ contentClass }}">
+            <div id="content-block" class="col-12">
 
                 {% include "_flash_messages.html.twig" %}
 
@@ -69,5 +61,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('build/user_layout.js') }}"></script>
+    <script src="{{ asset('build/base.js') }}"></script>
 {% endblock %}
