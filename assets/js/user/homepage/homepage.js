@@ -26,6 +26,12 @@ $(function () {
         sideMenu.search($(this).val());
     });
 
+    sideMenu.rowBtns.on('click', function (event) {
+        event.stopPropagation();
+    });
+
+    /* modal */
+
     let templateModal = new TemplateModal();
 
     // Showing the modal

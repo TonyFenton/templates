@@ -7,9 +7,6 @@
 {% block body %}
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <button id="side-menu-btn" type="button" class="d-lg-none navbar-toggler">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <a class="navbar-brand" href="{{ path('homepage') }}">Logo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,14 +16,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav ml-auto">
                     {% if is_granted('ROLE_USER') %}
-                        <div class="nav-item col-4 btn-group" role="group" aria-label="templates">
-                            <a class="btn btn-info" href="{{ path('template_index') }}">Templates</a>
-                            <a class="btn btn-primary icon-plus-squared" href="{{ path('template_new') }}"></a>
-                        </div>
-                        <div class="nav-item col-4 btn-group" role="group" aria-label="folders">
-                            <a class="btn btn-info" href="{{ path('folder_index') }}">Folders</a>
-                            <a class="btn btn-primary icon-plus-squared" href="{{ path('folder_new') }}"></a>
-                        </div>
                         <div class="nav-item col-4 btn-group" role="group" aria-label="user">
                             <a class="btn btn-info" href="{{ path('fos_user_profile_show') }}">{{ app.user.username|cut(10) }}</a>
                             <a class="btn btn-primary" href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>

@@ -2,10 +2,6 @@
     padding-top: 20px;
     padding-bottom: 10px;
 }
-#side-menu-list {
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: .25rem;
-}
 
 #side-menu-list .list-group-item {
     padding: 10px;
@@ -27,14 +23,20 @@
     font-size: 90%;
 }
 
-#side-menu-search-input {
-    border-width: 0 0 1px 0;
-}
-
 #side-menu-no-matching-templates {
     display: none;
     text-align: center;
     font-style: italic;
     color: #888888;
-    margin: 8px 0;
+    margin-top: 100px;
+}
+
+#tree-actions {
+    padding-top: .375rem;
+    padding-bottom: .375rem;
+}
+
+.tree-row-btn {
+    padding: 0;
+    margin-right: 10px;
 }

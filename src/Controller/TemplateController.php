@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Folder;
 use App\Entity\Template;
 use App\Form\TemplateType;
-use App\Repository\TemplateRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,16 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TemplateController extends AbstractController
 {
-
-    /**
-     * @Route("/template", name="template_index", methods={"GET"})
-     */
-    public function index(TemplateRepository $templateRepository): Response
-    {
-        return $this->render('template/index.html.twig',
-            ['templates' => $templateRepository->findByUser($this->getUser())]
-        );
-    }
 
     /**
      * Display a template
@@ -121,7 +110,7 @@ class TemplateController extends AbstractController
             $this->addFlash('success', 'The template has been deleted.');
         }
 
-        return $this->redirectToRoute('template_index');
+        return $this->redirectToRoute('homepage');
     }
 
 

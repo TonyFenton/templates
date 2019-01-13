@@ -13,9 +13,6 @@ Encore
     // uncomment to define the assets of the project
     .addEntry('base', './assets/js/base.js')
     .addEntry('template_new_edit', './assets/js/template/new_edit/new_edit.js')
-    .addEntry('folder_index', './assets/js/folder/index/index.js')
-    .addEntry('folder_content', './assets/js/folder/content/content.js')
-    .addEntry('template_index', './assets/js/template/index/index.js')
     .addEntry('user_homepage', './assets/js/user/homepage/homepage.js')
 
     // .addStyleEntry('css/app', './assets/css/app.scss')

@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Folder;
 use App\Form\FolderType;
-use App\Repository\FolderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,14 +14,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class FolderController extends Controller
 {
-    /**
-     * @Route("/", name="folder_index", methods="GET")
-     */
-    public function index(FolderRepository $folderRepository): Response
-    {
-        return $this->render('folder/index.html.twig', ['folders' => $folderRepository->findBy(['user' => $this->getUser()])]);
-    }
-
     /**
      * @Route("/new", name="folder_new", methods="GET|POST")
      */
@@ -40,23 +31,13 @@ class FolderController extends Controller
 
             $this->addFlash('success', 'The folder has been created.');
 
-            return $this->redirectToRoute('folder_index');
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('folder/new.html.twig', [
             'folder' => $folder,
             'form' => $form->createView(),
         ]);
-    }
-
-    /**
-     * @Route("/{id}", name="folder_content", methods="GET")
-     */
-    public function content(Folder $folder)
-    {
-        $this->denyAccessUnlessGranted('show', $folder);
-
-        return $this->render('folder/content.html.twig', ['folder' => $folder]);
     }
 
     /**
@@ -74,7 +55,7 @@ class FolderController extends Controller
 
             $this->addFlash('success', 'Your changes have been saved.');
 
-            return $this->redirectToRoute('folder_index');
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('folder/edit.html.twig', [
@@ -96,6 +77,6 @@ class FolderController extends Controller
             $this->addFlash('success', 'The folder has been deleted.');
         }
 
-        return $this->redirectToRoute('folder_index');
+        return $this->redirectToRoute('homepage');
     }
 }
