@@ -10,6 +10,7 @@ export default class SideMenu {
         this.folders = $('.side-menu-folder');
         this.searchInput = $('#side-menu-search-input');
         this.templateLists = $('.side-menu-template-list');
+        this.templates = $('.side-menu-template');
         this.noMatchingTemplates = $('#side-menu-no-matching-templates');
         this.rowBtns = this.sideMenuList.find('.tree-row-btn');
     };

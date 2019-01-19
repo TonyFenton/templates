@@ -30,6 +30,13 @@ $(function () {
         event.stopPropagation();
     });
 
+    // Showing the modal on eneter event
+    sideMenu.templates.on('keypress', function(event) {
+        if (13 === event.which) { // enter
+            $(this).trigger('click');
+        }
+    });
+
     /* modal */
 
     let templateModal = new TemplateModal();

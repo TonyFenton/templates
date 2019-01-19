@@ -41,7 +41,7 @@
                 </div>
                 <div style="{{ style }};" class="side-menu-template-list list-group">
                     {% for template in folder.templates %}
-                        <div class="list-group-item side-menu-template" data-toggle="modal" data-template-id="{{ template.id }}" data-target="#template-modal">
+                        <div class="list-group-item side-menu-template" data-toggle="modal" data-template-id="{{ template.id }}" data-target="#template-modal" tabindex="0">
                              <i class="icon-doc-inv" style="color:{{ folder.color }};"></i>
                             <span>{{ template.name|cut(50) }}</span>
                         </div>
