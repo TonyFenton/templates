@@ -1,4 +1,4 @@
-export default class TemplateVariableControl {
+export default class TemplateVariableManager {
 
     constructor(template, id, data) {
         this.template = template;
@@ -7,7 +7,7 @@ export default class TemplateVariableControl {
         this.initialValue = data.value;
         this.placeholder = data.desc;
         this.element = this.createElement();
-        this.variableControl = this.element.find('.variable-control');
+        this.variableManager = this.element.find('.variable-manager');
         this.variables = this.template.text.find('[data-id="' + this.id + '"]');
 
         if (typeof this.variables !== 'undefined') {
@@ -19,22 +19,22 @@ export default class TemplateVariableControl {
     }
 
     createElement() {
-        let control = this.template.element.find('.variable-control-row.prototype').clone();
-        control.removeClass('prototype');
-        control.find('label').text(this.name).attr('for', 'variable-control-' + this.id);
-        control.find('.variable-control').val(this.initialValue).attr('placeholder', this.placeholder);
-        this.template.textControl.append(control);
+        let manager = this.template.element.find('.variable-manager-row.prototype').clone();
+        manager.removeClass('prototype');
+        manager.find('label').text(this.name).attr('for', 'variable-manager-' + this.id);
+        manager.find('.variable-manager').val(this.initialValue).attr('placeholder', this.placeholder);
+        this.template.textManager.append(manager);
 
-        return control;
+        return manager;
     }
 
     initVariablesValue() {
-        this.variables.text(this.variableControl.val());
+        this.variables.text(this.variableManager.val());
     }
 
     attachFillingVariables() {
         let me = this;
-        this.variableControl.on('input', function () {
+        this.variableManager.on('input', function () {
             if ('' === $(this).val()) {
                 me.variables.text('{' + me.name + '}');
             } else {
@@ -45,7 +45,7 @@ export default class TemplateVariableControl {
 
     attachPointingVariables() {
         let me = this;
-        this.variableControl.on('focus', function () {
+        this.variableManager.on('focus', function () {
             me.variables.css('font-weight', 'bold');
             if ('' === $(this).val()) {
                 me.variables.text('{' + me.name + '}');
@@ -55,7 +55,7 @@ export default class TemplateVariableControl {
 
     attachUnpointingVariables() {
         let me = this;
-        this.variableControl.on('blur', function () {
+        this.variableManager.on('blur', function () {
             if ('' === $(this).val()) {
                 me.variables.text('');
             }

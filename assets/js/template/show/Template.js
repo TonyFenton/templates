@@ -1,14 +1,14 @@
-import TemplateVariableControl from "./TemplateVariableControl";
+import TemplateVariableManager from "./TemplateVariableManager";
 
 export default class Template {
 
     constructor(id, parent) {
         this.id = id;
         this.parent = parent;
-        this.variableControls = [];
+        this.variableManagers = [];
         this.element = parent.element.find('#template');
-        this.textControl = this.element.find('#text-control');
-        this.textControl.find('.variable-control-row:not(.prototype)').remove();
+        this.textManager = this.element.find('#text-manager');
+        this.textManager.find('.variable-manager-row:not(.prototype)').remove();
         this.text = this.element.find('#text');
     }
 
@@ -22,7 +22,7 @@ export default class Template {
                 this.parent.setBreadcrumb(data.path);
                 this.parent.setBreadcrumbBtn(this.id);
                 this.text.html(this.prepareText(data.text));
-                this.createVariableControls(data.variables);
+                this.createVariableManagers(data.variables);
                 this.parent.hideSpinner();
                 this.focusFirst();
             });
@@ -51,9 +51,9 @@ export default class Template {
     /**
      * @param variables
      */
-    createVariableControls(variables) {
+    createVariableManagers(variables) {
         $.each(variables, (id, variable) => {
-            this.variableControls.push(new TemplateVariableControl(this, id, variable));
+            this.variableManagers.push(new TemplateVariableManager(this, id, variable));
         });
     }
 
@@ -73,19 +73,19 @@ export default class Template {
      * Restore the initial state
      */
     reset() {
-        $.each(this.variableControls, (index, variableControl) => {
-            variableControl.variableControl.val(variableControl.initialValue).trigger('input');
+        $.each(this.variableManagers, (index, variableManager) => {
+            variableManager.variableManager.val(variableManager.initialValue).trigger('input');
         });
         this.focusFirst();
     }
 
     /**
-     * Focus the first variable control
+     * Focus the first variable manager
      */
     focusFirst() {
-        if (this.variableControls.length) {
-            let tempVal = this.variableControls[0].variableControl.val();
-            this.variableControls[0].variableControl.focus().val('').val(tempVal);
+        if (this.variableManagers.length) {
+            let tempVal = this.variableManagers[0].variableManager.val();
+            this.variableManagers[0].variableManager.focus().val('').val(tempVal);
         }
     }
 }

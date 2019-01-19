@@ -28,7 +28,7 @@
     right: 21px;
 }
 
-#variables-wrapper .text-variable-control {
+#variables-wrapper .text-variable-manager {
     background-color: #f7f7f7;
 }
 
@@ -42,7 +42,7 @@
     cursor: grabbing;
 }
 
-.variable-control {
+.variable-manager {
     margin: 10px 0;
 }
 
@@ -57,7 +57,7 @@
     border-radius: 5px;
 }
 
-#text-control {
+#text-manager {
     padding-top: 1px;
     padding-left: 15px;
     padding-right: 15px;

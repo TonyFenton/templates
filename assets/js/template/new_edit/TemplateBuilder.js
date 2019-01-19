@@ -32,9 +32,9 @@ export default class TemplateBuilder {
         const id = this.getVariableId();
         let newVariable = this.textVariablePrototype.clone(true);
         newVariable
-            .attr('id', 'variable-control-' + id)
+            .attr('id', 'variable-manager-' + id)
             .data('variable', this.createVariableData(name, value, desc))
-            .addClass('variable-control')
+            .addClass('variable-manager')
         ;
         newVariable.find('label').text(name).attr('for', 'variable-' + id);
         newVariable.find('input').val(value).attr({'id': 'variable-' + id, 'placeholder': desc});
@@ -49,10 +49,10 @@ export default class TemplateBuilder {
      * @param {string} desc
      */
     saveVariable(id, name, value, desc) {
-        let variableControl = $('#variable-control-' + id);
-        variableControl.data('variable', this.createVariableData(name, value, desc));
-        variableControl.find('label').text(name);
-        variableControl.find('input').val(value).attr('placeholder', desc);
+        let variableManager = $('#variable-manager-' + id);
+        variableManager.data('variable', this.createVariableData(name, value, desc));
+        variableManager.find('label').text(name);
+        variableManager.find('input').val(value).attr('placeholder', desc);
     }
 
     /**
@@ -60,18 +60,18 @@ export default class TemplateBuilder {
      * @param id
      */
     removeVariable(id) {
-        $('#variable-control-' + id).remove();
+        $('#variable-manager-' + id).remove();
     }
 
     /**
      * Get a variable config data + id
-     * @param {Object} variableControl
+     * @param {Object} variableManager
      * @returns {Object}
      */
-    getVariableData(variableControl) {
-        const variable = variableControl.data('variable');
+    getVariableData(variableManager) {
+        const variable = variableManager.data('variable');
         return {
-            'id': variableControl.attr('id').replace('variable-control-', ''),
+            'id': variableManager.attr('id').replace('variable-manager-', ''),
             'name': variable.name,
             'value': variable.value,
             'desc': variable.desc
@@ -99,7 +99,7 @@ export default class TemplateBuilder {
      */
     setVariablesOutput() {
         let data = [];
-        $('.variable-control').each(function () {
+        $('.variable-manager').each(function () {
             data.push($(this).data('variable'));
         });
         this.variablesOutput.val(JSON.stringify(data));

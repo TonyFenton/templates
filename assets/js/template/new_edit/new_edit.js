@@ -22,7 +22,7 @@ $(function () {
     /* Editing a variable */
     builder.editBtn.on('click', function () {
         modal.displayEditView();
-        const variable = builder.getVariableData($(this).closest('.variable-control'));
+        const variable = builder.getVariableData($(this).closest('.variable-manager'));
         modal.setVariable(
             variable.id,
             variable.name,

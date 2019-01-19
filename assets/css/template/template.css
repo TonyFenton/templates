@@ -2,7 +2,7 @@
     font-family: serif;
 }
 
-#text-control {
+#text-manager {
     margin-top: 7px;
 }
 
@@ -12,7 +12,7 @@
     margin-bottom: 20px;
 }
 
-.text-variable-control {
+.text-variable-manager {
     height: 38px;
 }
 
