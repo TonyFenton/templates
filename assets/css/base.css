@@ -22,12 +22,22 @@ body {
     }
 }
 
+@media (min-width: 992px) {
+    #main-nav .nav-item {
+        padding-right: 0;
+    }
+}
+
 #main-nav .nav-item a:first-child {
     min-width: 100px;
 }
 
 #main-nav .nav-item.btn-user-group a:last-child {
     min-width: 100px;
+}
+
+#main-nav .navbar-nav a {
+    border: 1px solid #212529
 }
 
 #main-nav,
