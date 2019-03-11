@@ -12,21 +12,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TemplateController extends AbstractController
 {
-
     /**
-     * Display a template
-     * @Route("/template/{id}", name="template_show", methods={"GET"}, requirements={"id"="\d+"})
+     * Get a template data
+     * @Route("/template/data/{id}", name="template_data", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function show(int $id): Response
+    public function data(Template $template): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $template = $em->getRepository(Template::class)->find($id);
-
         $this->denyAccessUnlessGranted('show', $template->getFolder());
-
-        if (null === $template) {
-            throw $this->createNotFoundException('No template found');
-        }
 
         return $this->json([
             'path' => [$template->getFolder()->getName(), $template->getName()],
@@ -56,7 +48,7 @@ class TemplateController extends AbstractController
 
             $this->addFlash('success', 'The template has been created.');
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('template_show', ['templateId' => $template->getId()]);
         }
 
         return $this->render('template/new_edit.html.twig', [
@@ -68,26 +60,20 @@ class TemplateController extends AbstractController
      * Edit a template
      * @Route("/template/{id}/edit", name="template_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
-    public function edit(Request $request, Template $id): Response
+    public function edit(Request $request, Template $template): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $template = $em->getRepository(Template::class)->find($id);
-
-        if (null === $template) {
-            throw $this->createNotFoundException('No template found');
-        }
-
         $this->denyAccessUnlessGranted('edit', $template->getFolder());
 
         $form = $this->createForm(TemplateType::class, $template, ['user' => $this->getUser()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
             $em->flush();
 
             $this->addFlash('success', 'Your changes have been saved.');
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('template_show', ['templateId' => $template->getId()]);
         }
 
         return $this->render('template/new_edit.html.twig', [

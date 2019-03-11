@@ -17,7 +17,7 @@ export default class Template {
      */
     load() {
         this.parent.showSpinner();
-        $.get('/template/' + this.id)
+        $.get('/template/data/' + this.id)
             .done(data => {
                 this.parent.setBreadcrumb(data.path);
                 this.parent.setBreadcrumbBtn(this.id);

@@ -26,6 +26,6 @@ class FolderVoter extends Voter
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
-        return $token->getUser() === $subject->getUser();
+        return $token->getUser()->getId() === $subject->getUser()->getId();
     }
 }

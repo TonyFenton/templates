@@ -100,5 +100,8 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script>
+        var showTemplateId = '{{ show_template_id }}' === '' ? null : parseInt('{{ show_template_id }}');
+    </script>
     <script src="{{ asset('build/user_homepage.js') }}"></script>
 {% endblock %}

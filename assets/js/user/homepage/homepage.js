@@ -57,4 +57,9 @@ $(function () {
         templateModal.template.reset();
     });
 
+    /** Showing a template on rendering the page */
+    if (null !== showTemplateId) {
+        sideMenu.templateLists.find('[data-template-id="' + showTemplateId + '"]').trigger('click');
+    }
+
 });
